@@ -3,9 +3,7 @@ import Link from "next/link"
 export default function course({params}){
     return (
         <div className="text-2xl">
-            The Course page {params.courseId} Includes Topics
-            <ul>
-            </ul>
+            <h1>Introduction to computer science and programming in python.</h1>
         </div>
     )
 }
