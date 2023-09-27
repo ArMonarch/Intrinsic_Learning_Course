@@ -1,7 +1,7 @@
 "use client"
 import { useRouter, usePathname } from "next/navigation"
 
-export default function course({params}){
+export default function Course({params}){
   const route = useRouter()
   const path = usePathname()
 
