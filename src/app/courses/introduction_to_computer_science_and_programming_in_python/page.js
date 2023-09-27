@@ -71,7 +71,7 @@ nts.
       </div>
 
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Goals</dt>
+        <dt class="text-sm font-medium leading-6 text-gray-900">Video</dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
           <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
             <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
@@ -94,7 +94,11 @@ nts.
     </dl>
   </div>
 </div>
-
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enroll now</button>
+    </div>
+</div>
 
             
             
