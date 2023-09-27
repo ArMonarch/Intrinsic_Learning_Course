@@ -1,6 +1,11 @@
 import Link from "next/link"
 
+export const metadata = {
+    title: 'List of Courses'
+}
+
 export default function courses(){
+
     return (
         <div className="text-2xl">
             List Of Courses
