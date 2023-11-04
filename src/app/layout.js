@@ -1,6 +1,9 @@
+'use client';
 import './globals.css'
 import { Fira_Code } from 'next/font/google'
 import { Theme } from '@radix-ui/themes'
+import Navbar from './components/Navbar'
+import { AuthContextProvider } from './context/AuthContext';
 
 const firaCode = Fira_Code({ subsets: ["latin"] })
 
@@ -16,9 +19,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={firaCode.className}>
-        <Theme>
-          {children}
-        </Theme>
+        <AuthContextProvider>
+          <Theme>
+            <Navbar/>
+            {children}
+          </Theme>
+        </AuthContextProvider>
       </body>
     </html>
   )

@@ -9,6 +9,7 @@ export default function courses(){
     return (
         <div className="text-2xl">
             List Of Courses
+            This page should only be visible as 'my courses' when the user is logged in later on
             <ul>
                 <li><Link href="/courses/Introduction_to_Computer_Science" className="text-blue-600 hover:text-red-500">Introduction to Computer Science</Link></li>
                 <li><Link href="/courses/Introduction_to_IoT" className="text-blue-600 hover:text-red-500">Introduction to IoT</Link></li>
