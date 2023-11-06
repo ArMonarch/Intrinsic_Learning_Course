@@ -101,9 +101,11 @@ nts.
   </div>
 </div>
 <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-  <Link href="/introduction_to_computer_science_and_programming_in_python/Units">
+  <Link href="/courses/introduction_to_computer_science_and_programming_in_python/units">
     <div>
-        <button type="submit"  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enroll now</button>
+        <button type="submit"  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          Enroll now
+        </button>
     </div>
   </Link>
 </div>

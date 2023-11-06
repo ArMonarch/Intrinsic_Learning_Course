@@ -30,12 +30,16 @@ const Navbar = () => {
             <li className='p-2 cursor-pointer'>
                 <Link href="/">Home</Link>
             </li>
+            {!user ?(null):(
             <li className='p-2 cursor-pointer'>
                 <Link href="/courses">Courses</Link>
             </li>
-            <li className='p-2 cursor-pointer'>
+            
+            )}
+            {user ?(<li className='p-2 cursor-pointer'>
                 <Link href="/profile">Profile</Link>
-            </li>
+            </li>):(null)}
+            
         </ul>
         <ul className='flex'>
             {!user?(
