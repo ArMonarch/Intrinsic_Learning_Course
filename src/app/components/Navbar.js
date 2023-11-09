@@ -7,13 +7,16 @@ import { signOut } from 'firebase/auth';
 const Navbar = () => {
     const {user, googleSignIn, logOut} = UserAuth();
 
+
     const handleSignIn = async()=>{
         try{
             await googleSignIn();
+            
 
         }catch(error){
             console.log(error);
         }
+    
 
     }
     const handleSignOut = async()=>{

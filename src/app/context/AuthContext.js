@@ -13,6 +13,7 @@ export const AuthContextProvider = ({children}) => {
     const googleSignIn = () =>{
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
+        
     }
 
     const logOut = () =>{
@@ -20,9 +21,26 @@ export const AuthContextProvider = ({children}) => {
     }
 
     useEffect(()=>{
-        const sub = onAuthStateChanged(auth, (currentUser)=>{
+        const sub = onAuthStateChanged(auth, async(currentUser)=>{
             setUser(currentUser);
+            if(user){
+            console.log('user:',user)
+            const strigifiedUser = JSON.stringify(user)
+            console.log('strigifiedUser',strigifiedUser)
+            const res = await fetch("http://localhost:8081/users/saveUser", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                   
+                  body: strigifiedUser, 
+                  // body data type must match "Content-Type" header
+                })
+            }
         });
+       
         return () => sub();
     }, [user])
 
