@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
 
 export const metadata = {
     title: 'List of Courses'
 }
+
+
 
 export default function courses(){
 

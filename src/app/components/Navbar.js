@@ -34,7 +34,7 @@ const Navbar = () => {
             "text":"nodemailer",
             "emailIdArray":[
                 "prayashshakya20@gmail.com",
-                "shakyavi@gmail.com"
+                "bigyadhungana@gmail.com"
             ]
         
         }
