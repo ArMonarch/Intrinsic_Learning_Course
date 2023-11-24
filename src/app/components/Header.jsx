@@ -14,7 +14,7 @@ const Header = () => {
             </span>
             <span>
               <Typewriter options={{
-                strings: ["Learning Adventure", "Destiny", "Prafful Raj Thapa", "Ar Demon"],
+                strings: ["Learning Adventure", "Destiny", "Ar Demon"],
                 autoStart: true,
                 loop: true,
               }} />

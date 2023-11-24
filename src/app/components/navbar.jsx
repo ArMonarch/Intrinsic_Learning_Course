@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const navLinks = [
     {title: "List Of Cources", path: "/courses"},
-    {title: "About", path: "/"},   
-    {title: "Login", path:"/"},
+    {title: "Login", path:"/auth/login"},
+    {title: "Sign up", path:"/auth/register"},
 ]
 
 const Navbar = () => {
