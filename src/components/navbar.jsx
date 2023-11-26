@@ -1,4 +1,3 @@
-// "use client";
 import NavLink from "./NavLink";
 import Link from "next/link";
 

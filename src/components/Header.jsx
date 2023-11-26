@@ -1,7 +1,6 @@
 "use client";
-
 import Image from "next/image";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect"
 
 const Header = () => {
   return (

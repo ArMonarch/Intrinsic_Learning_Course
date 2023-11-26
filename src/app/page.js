@@ -1,7 +1,7 @@
 // import Link from "next/link";
-import Navbar from "./components/navbar";
-import Header from "./components/Header";
-import AboutSection from "./components/AboutSection";
+import Navbar from "@/components/navbar";
+import Header from "@/components/Header";
+import AboutSection from "@/components/AboutSection";
 
 export default function Home() {
   return (

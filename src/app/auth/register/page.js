@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
     title: "Sign Up | Intrinsically Motivating Courses"
@@ -7,9 +7,7 @@ export const metadata = {
 export default function Register() {
     return(
         <>
-            <div>
-                Register Page
-            </div>
+        <Image src="/image/AuthBackground.jpg" alt="" layout="fill" objectFit="cover" quality={100} className="absolute z-10"/>
         </>
     );
 }
