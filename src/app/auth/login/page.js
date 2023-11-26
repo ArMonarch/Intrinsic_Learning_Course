@@ -25,7 +25,7 @@ export default function Login() {
                             <LoginButton />
                         </Link>
                     </div>
-                    <div className="flex justify-center uppercase text-sm mt-4 p-1 text-gray-400 font-bold hover:text-gray-200"><Link href={"#"}>Can't Sign In?</Link></div>
+                    <div className="flex justify-center uppercase text-sm mt-4 p-1 text-gray-400 font-bold hover:text-gray-200"><Link href={"#"}>Can&apos;t Sign In?</Link></div>
                     <div className="flex justify-center uppercase text-sm text-gray-400 font-bold hover:text-gray-200"><Link href={"/auth/register"}>Create Account</Link></div>
                 </div>
                 <div className="flex-grow"></div>
