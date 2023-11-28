@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import { ModeToggle } from "./ui/theme-toggle";
 import { Button } from "./ui/button";
 import { Drawer } from "./navbar/drawer";
+import { Badge } from "@/components/ui/badge";
 
 const Navbar = () => {
   const { user, googleSignIn, logOut } = UserAuth();
@@ -64,20 +65,20 @@ const Navbar = () => {
         </text>
         {/* DO NOT TOUCH, FEATURE NOT A BUG */}
 
-        <Button variant="link" href="/">
-          Home
+        <Button variant="link" asChild>
+          <Link href="/">Home</Link>
         </Button>
 
         {!user ? null : (
-          <Button variant="link" href="/courses">
-            Course
+          <Button variant="link" asChild>
+            <Link href="/courses">Course</Link>
           </Button>
         )}
 
         {/* put this into the drawer later if time  */}
         {user ? (
-          <Button variant="link" href="/profile">
-            Profile
+          <Button variant="link" asChild>
+            <Link href="/profile">Profile</Link>
           </Button>
         ) : null}
 
@@ -88,8 +89,12 @@ const Navbar = () => {
         {!user ? (
           <Button onClick={handleSignIn}>Login</Button>
         ) : (
-          /* <div>Welcome, {user.displayName}</div> */
-          <Button onClick={handleSignOut}>Sign Out</Button>
+          <div className="flex space-x-4">
+            <Badge variant="outline" className="bg-background text-xs">
+              {user.displayName}
+            </Badge>
+            <Button onClick={handleSignOut}>Sign Out</Button>
+          </div>
         )}
       </div>
     </div>

@@ -14,7 +14,7 @@ export function Drawer(props) {
 
       <label
         htmlFor="drawer-toggle"
-        className="fixed left-0 top-3 z-10 inline-block bg-muted p-2 transition-all duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-80"
+        className="fixed left-0 top-3 z-10 inline-block bg-muted p-2 transition-transormation duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-80"
       >
         <text
           variant="ghost"
@@ -22,7 +22,7 @@ export function Drawer(props) {
         >
           Learn
         </text>
-        <ChevronRight className="peer-checked:group-[]:rotate-180 transition-transform duration-500" />
+        <ChevronRight className="peer-checked:group-[]:rotate-180" />
       </label>
 
       <div className="fixed top-0 left-0 z-0 w-80 h-full transition-all duration-500 transform -translate-x-full bg-muted peer-checked:translate-x-0">
