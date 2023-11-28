@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
+import { ModeToggle } from "./ui/theme-toggle";
+import { Button } from "./ui/button";
+import { Drawer } from "./navbar/drawer";
 
 const Navbar = () => {
   const { user, googleSignIn, logOut } = UserAuth();
@@ -42,40 +45,53 @@ const Navbar = () => {
     console.log(res);
   };
 
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheck = (event) => {
+    setIsChecked(event.target.checked);
+    console.log("Checkbox is checked:", event.target.checked);
+  };
+
   return (
-    <div className="h-20 w-full border-b-2 flex items-center justify-between p-2 bg-gray-800 space-x-4  text-white">
-      <ul className="flex">
-        <li className="p-2 cursor-pointer">
-          <Link href="/">Home</Link>
-        </li>
+    <div>
+      <Drawer handleCheck={handleCheck} />
+      <div className="flex flex-row space-x-4 sticky top-0 p-3 bg-muted ">
+        {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
+        <text
+          variant="ghost"
+          className="invisible flex-grow right- text-3xl font-extrabold"
+        >
+          Learn
+        </text>
+        {/* DO NOT TOUCH, FEATURE NOT A BUG */}
+
+        <Button variant="link" href="/">
+          Home
+        </Button>
+
         {!user ? null : (
-          <li className="p-2 cursor-pointer ">
-            <Link href="/courses">Course</Link>
-          </li>
+          <Button variant="link" href="/courses">
+            Course
+          </Button>
         )}
+
+        {/* put this into the drawer later if time  */}
         {user ? (
-          <li className="p-2 cursor-pointer ">
-            <Link href="/profile">Profile</Link>
-          </li>
+          <Button variant="link" href="/profile">
+            Profile
+          </Button>
         ) : null}
-        <li className="p2 cursor-pointer" onClick={sendEmail}>
+
+        <Button variant="link" onClick={sendEmail}>
           Send
-        </li>
-      </ul>
-      <ul className="flex ">
+        </Button>
+        <ModeToggle />
         {!user ? (
-          <li onClick={handleSignIn} className="p-2 cursor-pointer ">
-            Login
-          </li>
+          <Button onClick={handleSignIn}>Login</Button>
         ) : (
-          <div className="flex justify-between">
-            <p>Welcome, {user.displayName}</p>
-            <p onClick={handleSignOut} className="p-2 cursor-pointer ">
-              Sign Out
-            </p>
-          </div>
+          /* <div>Welcome, {user.displayName}</div> */
+          <Button onClick={handleSignOut}>Sign Out</Button>
         )}
-      </ul>
+      </div>
     </div>
   );
 };
