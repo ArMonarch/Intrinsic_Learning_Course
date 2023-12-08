@@ -6,9 +6,6 @@ export default function Course({params}){
   const path = usePathname()
 
   function Enroll() {
-    //const currentRoute = route.aspath
-    // const path = currentRoute + "/units"
-    // router.push(path)
     route.push(`${path}/units ` )
     return
   }

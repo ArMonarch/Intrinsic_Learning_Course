@@ -1,11 +1,15 @@
-function ProfilePage () {
-    return(
-        <>
-            <div>
-                Hello this is the profile Page.
-            </div>
-        </>
-    );
-}
+"use client"
+import React from 'react'
+import { UserAuth } from '../context/AuthContext'
+import ProfileCard from '../components/ProfileCard';
 
-export default ProfilePage;
+const page = () => {
+    const {user} = UserAuth();
+
+  return (
+    <div>
+        {user ?(<ProfileCard/>):(<p>You must be logged in to view this.</p>)}
+    </div>
+  )
+        }
+export default page;
