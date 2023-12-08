@@ -53,9 +53,9 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className=" sticky top-0">
       <Drawer handleCheck={handleCheck} />
-      <div className="flex flex-row space-x-4 sticky top-0 p-3 bg-muted ">
+      <div className="flex flex-row space-x-4 p-3 bg-muted ">
         {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
         <text
           variant="ghost"
@@ -90,10 +90,12 @@ const Navbar = () => {
           <Button onClick={handleSignIn}>Login</Button>
         ) : (
           <div className="flex space-x-4">
-            <Badge variant="outline" className="bg-background text-xs">
+            <Badge variant="outline" className="bg-background text-md">
               {user.displayName}
             </Badge>
-            <Button onClick={handleSignOut}>Sign Out</Button>
+            <Button onClick={handleSignOut} className="font-semibold">
+              Sign Out
+            </Button>
           </div>
         )}
       </div>

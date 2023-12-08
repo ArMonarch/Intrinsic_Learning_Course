@@ -1,12 +1,22 @@
 "use client";
 import "./global.css";
-import { Fira_Code } from "next/font/google";
+import { Fira_Code, Nunito_Sans } from "next/font/google";
 import { ThemeProvider } from "./components/theme-provider";
 
 import Navbar from "./components/Navbar";
 import { AuthContextProvider } from "./context/AuthContext";
 
-const firaCode = Fira_Code({ subsets: ["latin"] });
+const firacode = Fira_Code({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-firacode",
+});
+
+const nunito = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito",
+});
 
 export const metadata = {
   title: "Intrinsically Motivating Courses",
@@ -18,8 +28,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={firaCode.className}>
+    <html
+      lang="en"
+      className={`${nunito.variable} ${firacode.variable} font-nunito`}
+    >
+      <body>
         <AuthContextProvider>
           <ThemeProvider
             attribute="class"

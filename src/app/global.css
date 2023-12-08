@@ -4,7 +4,7 @@
 
 @layer components {
   .lesson-card {
-    @apply flex flex-row transition-all mb-5 mx-3 hover:bg-secondary hover:border-primary hover:py-1 hover:border-4;
+    @apply flex flex-row  transition-all mb-3 mx-3 hover:bg-secondary hover:border-primary hover:py-1 hover:border-[3px] hover:relative;
   }
 }
 
@@ -49,7 +49,7 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
+    --border: 240 0% 25%;
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
   }

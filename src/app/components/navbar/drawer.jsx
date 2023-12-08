@@ -22,7 +22,7 @@ export function Drawer(props) {
         >
           Learn
         </text>
-        <ChevronRight className="peer-checked:group-[]:rotate-180" />
+        <ChevronRight className="peer-checked:group-[]:rotate-180 transition-transform duration-500" />
       </label>
 
       <div className="fixed top-0 left-0 z-0 w-80 h-full transition-all duration-500 transform -translate-x-full bg-muted peer-checked:translate-x-0">

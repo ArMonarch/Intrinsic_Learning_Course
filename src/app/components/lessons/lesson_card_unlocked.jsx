@@ -6,9 +6,10 @@ import {
   CardHeader,
 } from "../ui/card";
 import { useState } from "react";
-
+import { firaCode } from "@/app/layout";
 import { Lock } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function LessonCard(props) {
   const [isActive, setActive] = useState(false);
@@ -18,9 +19,11 @@ export function LessonCard(props) {
     return isActive ? setActive(false) : setActive(true);
   };
   return (
-    <Card className=" border-8 border-border w-5/12 mx-auto mt-5">
+    <Card
+      className={`border-8 border-border transition-all duration-500 max-h-[390px] ${props.alignment}`}
+    >
       <CardHeader>
-        <CardTitle className="text-center font-bold tracking-wide flex">
+        <CardTitle className="text-center font-firacode tracking-wide flex">
           <Button
             onClick={showLesson}
             variant="outline"
@@ -31,37 +34,43 @@ export function LessonCard(props) {
         </CardTitle>
       </CardHeader>
 
-      <div>
+      {/* {isActive ? ( */}
+      <div
+        className={`${
+          isActive ? "max-h-[400px] " : "max-h-0"
+        } transition-all overflow-hidden duration-500 `}
+      >
         <Card className="lesson-card">
-          <a className="block flex-grow p-5 hover:" href="">
-            Lesson 1 Link //add link to lesson here
-          </a>
-          <div className="m-1 border-2 rounded-full p-4">
+          <Link className="block flex-grow p-5 " href="">
+            Lesson 1
+          </Link>
+          <div className="m-1 border-2 rounded-full p-3">
             {/* {if previous lesson unlocked, then available, else unavailable} */}
             <Lock />
           </div>
         </Card>
 
         <Card className="lesson-card">
-          <a className="block flex-grow p-5 hover:" href="">
-            Lesson 2 Link //add link to lesson here
-          </a>
-          <div className="m-1 border-2 rounded-full p-4">
+          <Link className="block flex-grow p-5 " href="">
+            Lesson 2
+          </Link>
+          <div className="m-1 border-2 rounded-full p-3">
             {/* {if previous lesson unlocked, then available, else unavailable} */}
             <Lock />
           </div>
         </Card>
 
-        <Card className="lesson-card">
-          <a className="block flex-grow p-5 hover:" href="">
-            Lesson 3 Link //add link to lesson here
-          </a>
-          <div className="m-1 border-2 rounded-full p-4">
+        <Card className="lesson-card mb-10">
+          <Link className="block flex-grow p-5 " href="">
+            Lesson 3
+          </Link>
+          <div className="m-1 border-2 rounded-full p-3">
             {/* {if previous lesson unlocked, then available, else unavailable} */}
             <Lock />
           </div>
         </Card>
       </div>
+      {/* ) : null} */}
     </Card>
   );
 }

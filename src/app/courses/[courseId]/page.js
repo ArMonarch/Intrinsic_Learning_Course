@@ -1,5 +1,3 @@
-import Link from "next/link";
-
-export default function course({ params }) {
-  return <div className="text-2xl"></div>;
+export default function Course({ params }) {
+  return <div className="text-2xl">Course:{params.courseID}</div>;
 }
