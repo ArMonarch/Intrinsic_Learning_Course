@@ -7,7 +7,7 @@ import {
 } from "../ui/card";
 import { useState } from "react";
 import { firaCode } from "@/app/layout";
-import { Lock } from "lucide-react";
+import { Lock, Unlock } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -18,12 +18,44 @@ export function LessonCard(props) {
     console.log(isActive);
     return isActive ? setActive(false) : setActive(true);
   };
+
+  // const lockedLesson = () => {
+  //   return (
+  //     <div className="hover:">
+  //       <Lock size={32} />
+  //     </div>
+  //   );
+  // };
   return (
     <Card
-      className={`border-8 border-border transition-all duration-500 max-h-[390px] ${props.alignment}`}
+      className={
+        "border-8 border-border transition-all duration-500 max-h-[390px]"
+      }
     >
-      <CardHeader>
-        <CardTitle className="text-center font-firacode tracking-wide flex">
+      <CardHeader className="pt-4 group">
+        {props.connectorAlign == "right" ? (
+          <div className="relative ml-auto translate-x-6 translate-y-3 ">
+            <Button
+              asChild
+              variant="outline hover:bg-border"
+              className="absolute rounded-r-full h-[70px] w-[70px] bg-border animate-wiggle"
+            >
+              <Unlock />
+            </Button>
+          </div>
+        ) : props.connectorAlign == "left" ? (
+          <div className="relative mr-auto -translate-x-24 translate-y-3 ">
+            <Button
+              asChild
+              variant="outline hover:bg-border"
+              className="absolute rounded-l-full h-[70px] w-[70px] bg-border"
+            >
+              <Lock className="group-hover:animate-shake" />
+            </Button>
+          </div>
+        ) : null}
+
+        <CardTitle className="group text-center font-firacode tracking-wide flex">
           <Button
             onClick={showLesson}
             variant="outline"

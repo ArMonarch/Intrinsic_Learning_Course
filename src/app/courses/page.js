@@ -10,14 +10,14 @@ export const metadata = {
 
 export default function courses() {
   return (
-    <main className="grid grid-cols-2 mx-12 my-8 gap-8 gap-x-32">
-      <LessonCard title="Intro to Python" alignment="justify-self-end" />
+    <main className="grid grid-cols-2 mx-40 my-8 gap-8 gap-x-32 justify-items-center">
+      <LessonCard title="Intro to Python" connectorAlign="right" />
 
       <div className="place-self-center">insert angular connector</div>
       <div className="place-self-center">insert angular connector</div>
-      <LessonCard title="Intro to Html/CSS" alignment="justify-self-start" />
+      <LessonCard title="Intro to Html/CSS" connectorAlign="left" />
 
-      <LessonCard title="Coming Soon" alignment="justify-self-end" />
+      <LessonCard title="Coming Soon" connectorAlign="right" />
     </main>
   );
 }
