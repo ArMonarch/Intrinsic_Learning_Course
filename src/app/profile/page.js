@@ -1,19 +1,15 @@
-"use client"
-import React from 'react'
-import { UserAuth } from '../context/AuthContext'
-import ProfileCard from '../components/ProfileCard';
+"use client";
+import React from "react";
+import { UserAuth } from "../context/AuthContext";
+import ProfileCard from "../components/navbar/ProfileCard";
 
 const page = () => {
-    const {user} = UserAuth();
+  const { user } = UserAuth();
 
   return (
     <div>
-        {user ?(
-            <ProfileCard/>
-        ):(
-            <p>You must be logged in to view this.</p>
-        )}
+      {user ? <ProfileCard /> : <p>You must be logged in to view this.</p>}
     </div>
-  )
-        }
-export default page
+  );
+};
+export default page;

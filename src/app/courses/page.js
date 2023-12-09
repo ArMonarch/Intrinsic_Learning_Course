@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { LessonCard } from "../components/lessons/lesson_card_unlocked";
+import { ProfileMenu } from "../components/navbar/profileMenu";
 
 export const metadata = {
   title: "List of Courses",

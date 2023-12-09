@@ -1,5 +1,6 @@
 "use client";
 import "./global.css";
+import { useState } from "react";
 import { Fira_Code, Nunito_Sans } from "next/font/google";
 import { ThemeProvider } from "./components/theme-provider";
 
@@ -27,6 +28,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheck = (event) => {
+    setIsChecked(event.target.checked);
+    console.log("Checkbox is checked:", event.target.checked);
+  };
+
+  function pageBackground() {
+    isChecked ? "bg-background/80 backdrop-blur-sm" : null;
+  }
   return (
     <html
       lang="en"
@@ -40,7 +50,7 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
+            <Navbar handleCheck={handleCheck} />
             {children}
           </ThemeProvider>
         </AuthContextProvider>

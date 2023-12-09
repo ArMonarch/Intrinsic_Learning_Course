@@ -1,14 +1,16 @@
 import {
   Card,
-  CardTitle,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
-} from "../ui/card";
+  CardTitle,
+} from "@/components/ui/card";
 import { useState } from "react";
 import { firaCode } from "@/app/layout";
 import { Lock, Unlock } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 
 export function LessonCard(props) {
@@ -38,7 +40,7 @@ export function LessonCard(props) {
             <Button
               asChild
               variant="outline hover:bg-border"
-              className="absolute rounded-r-full h-[70px] w-[70px] bg-border animate-wiggle"
+              className="absolute z-50 rounded-r-full h-[70px] w-[70px] bg-border animate-wiggle"
             >
               <Unlock />
             </Button>
