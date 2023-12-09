@@ -14,7 +14,7 @@ const ProfileCard = () => {
         const data= await updateExp(user);
         setExp(data);
       })()
-    })
+    },[])
 
 
 

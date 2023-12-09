@@ -8,8 +8,12 @@ const page = () => {
 
   return (
     <div>
-        {user ?(<ProfileCard/>):(<p>You must be logged in to view this.</p>)}
+        {user ?(
+            <ProfileCard/>
+        ):(
+            <p>You must be logged in to view this.</p>
+        )}
     </div>
   )
         }
-export default page;
+export default page
