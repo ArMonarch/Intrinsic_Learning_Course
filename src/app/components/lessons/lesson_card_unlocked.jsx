@@ -16,24 +16,36 @@ import Link from "next/link";
 export function LessonCard(props) {
   const [isActive, setActive] = useState(false);
 
+  // const [lessonProgress, setProgress] = useState([
+  //   { unit1: 0, unit2: 0, unit3: 0 },
+  //   { unit1: 0, unit2: 0, unit3: 0 },
+  //   { unit1: 0, unit2: 0, unit3: 0 },
+  // ]);
+
+  // function updateProgress(index, key, score) {
+  //   setProgress((lessonProgress) => {
+  //     // Create a new array to avoid mutating the state directly
+  //     const newLessonProgress = [...lessonProgress];
+
+  //     // Update the score for the specified unit of the specified lesson
+  //     newLessonProgress[index][key] = score;
+  //     console.log(lessonProgress);
+  //     return newLessonProgress;
+  //   });
+  // }
+
   const showLesson = () => {
     console.log(isActive);
     return isActive ? setActive(false) : setActive(true);
   };
 
-  // const lockedLesson = () => {
-  //   return (
-  //     <div className="hover:">
-  //       <Lock size={32} />
-  //     </div>
-  //   );
-  // };
   return (
     <Card
       className={
         "border-8 border-border transition-all duration-500 max-h-[390px]"
       }
     >
+      {/* <Button onClick={() => updateProgress(1, "unit2", 5)}>test</Button> */}
       <CardHeader className="pt-4 group">
         {props.connectorAlign == "right" ? (
           <div className="relative ml-auto translate-x-6 translate-y-3 ">
@@ -68,7 +80,6 @@ export function LessonCard(props) {
         </CardTitle>
       </CardHeader>
 
-      {/* {isActive ? ( */}
       <div
         className={`${
           isActive ? "max-h-[400px] " : "max-h-0"
@@ -104,7 +115,6 @@ export function LessonCard(props) {
           </div>
         </Card>
       </div>
-      {/* ) : null} */}
     </Card>
   );
 }
