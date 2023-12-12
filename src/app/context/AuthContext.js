@@ -24,9 +24,9 @@ export const AuthContextProvider = ({children}) => {
         const sub = onAuthStateChanged(auth, async(currentUser)=>{
             setUser(currentUser);
             if(user){
-            console.log('user:',user)
+            // console.log('user:',user)
             const strigifiedUser = JSON.stringify(user)
-            console.log('strigifiedUser',strigifiedUser)
+            // console.log('strigifiedUser',strigifiedUser)
             const res = await fetch("http://localhost:8081/users/saveUser", {
                 method: "POST",
                 mode: "cors",
