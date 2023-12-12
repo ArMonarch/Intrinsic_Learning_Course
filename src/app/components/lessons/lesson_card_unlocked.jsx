@@ -16,7 +16,7 @@ export function LessonCard(props) {
   const [isActive, setActive] = useState(false);
 
   const showLesson = () => {
-    console.log(isActive);
+    // console.log(isActive);
     return isActive ? setActive(false) : setActive(true);
   };
   return (
