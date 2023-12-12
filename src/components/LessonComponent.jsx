@@ -1,12 +1,12 @@
 import { firacode } from "@/app/layout";
 
-function UnitContex({Values, ListStatus, ListValues}) {
+function UnitContex({Texts, ListStatus, ListValues}) {
     return(
         <div className={`flex flex-col w-[700px]`}>
             {
-            Values.map(
-                (Value, index) => {
-                    return(<div key={index}>{Value}</div>);
+            Texts.map(
+                (Text, index) => {
+                    return(<div key={index}>{Text}</div>);
                 })
             }
             {ListStatus && 
