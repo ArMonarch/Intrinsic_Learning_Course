@@ -7,8 +7,9 @@ export const metadata = {
 async function getCourseList(){
   try {
     const res = await fetch(`http://localhost:8081/courses/listCourses`, {cache:'no-store'})
-    if (!res.error){return res.json()}
-    else {throw new Error(res.json().error)}
+    const Data = res.json()
+    if (!Data.error){return Data}
+    else {throw new Error(Data.error)}
   } catch (error) {
     console.log(error)
   }
@@ -17,20 +18,19 @@ async function getCourseList(){
 
 export default async function courses() {
   const CourseList = await getCourseList().then((Courses) => {return Courses.data})
-  //console.log(CourseList)
   return (
     <main className="mx-12 my-8">
-      {CourseList.map((courseName, index) => {
+      {CourseList.map((course, index) => {
         if (index % 2) {
           return (
             <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
               <div className="place-self-center"></div>
-              <LessonCard title={courseName.name} alignment="justify-self-start" />
+              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-start" />
             </div>
         )} else {
           return (
             <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
-              <LessonCard title={courseName.name} alignment="justify-self-end" /><div className="place-self-center"></div>
+              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-end" /><div className="place-self-center"></div>
             </div>
           )
         }
