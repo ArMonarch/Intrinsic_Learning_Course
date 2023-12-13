@@ -1,6 +1,13 @@
 import { Button } from "./ui/button";
 
-function QuizComponent ({MainQuestion, SubQuestion, Options}) {
+function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
+    const checkAns = (option) => {
+        if (option == Answer) {
+          console.log("correct");
+        } else {
+          console.log("incorrect");
+        }
+      };
     return(
         <div className="flex flex-col w-[700px]">
             <div>
@@ -19,7 +26,7 @@ function QuizComponent ({MainQuestion, SubQuestion, Options}) {
                 {
                 Options.map(
                     (Option, index) => {
-                        return(<div key={index}><Button>{Option}</Button></div>)
+                        return(<div key={index}><Button onClick = {()=>{checkAns(Option)}}>{Option}</Button></div>)
                     }
                 )
                 }                
