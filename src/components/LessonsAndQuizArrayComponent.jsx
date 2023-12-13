@@ -19,7 +19,7 @@ export function LessonAndQuizComponent ({Lessons}) {
         } 
     }
 
-    const {ComponentType, MainQuestion, SubQuestion, Options, Text, ListStatus, ListValues } = currentComponentValue;
+    const {ComponentType, MainQuestion, SubQuestion, Options, Text, ListStatus, ListValues, Answer } = currentComponentValue;
     return (
         <div className="flex flex-col h-full">
             <div className="flex flex-col h-full items-center">
@@ -27,7 +27,7 @@ export function LessonAndQuizComponent ({Lessons}) {
                     <div className="flex flex-col">
                         { 
                             ComponentType == "Quiz" ? (
-                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={SubQuestion} Options={Options}/>
+                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={SubQuestion} Options={Options} Answer = {Answer}/>
                             ) : (
                                 <LessonComponent Texts={Text} ListStatus={ListStatus} ListValues={ListValues} />
                             )
