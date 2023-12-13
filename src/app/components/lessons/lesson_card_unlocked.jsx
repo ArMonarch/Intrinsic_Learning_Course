@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -39,6 +40,43 @@ export function LessonCard(props) {
     return isActive ? setActive(false) : setActive(true);
   };
 
+  const LessonButton = ({ isLocked, title }) => {
+    return (
+      <Button
+        disabled={isLocked}
+        onClick={showLesson}
+        variant="outline"
+        className="text-3xl font-semibold flex-grow p-10 hover:scale-105 transition-transform duration-300"
+      >
+        {title}
+      </Button>
+    );
+  };
+
+  const LockIcon = ({ connectorAlign, isLocked }) => {
+    return connectorAlign == "right" ? (
+      <div className="relative ml-auto translate-x-6 translate-y-3 ">
+        <Button
+          asChild
+          variant="outline hover:bg-border"
+          className="absolute z-0 rounded-r-full h-[70px] w-[70px] bg-border "
+        >
+          {isLocked ? <Lock /> : <Unlock />}
+        </Button>
+      </div>
+    ) : connectorAlign == "left" ? (
+      <div className="relative mr-auto -translate-x-24 translate-y-3 ">
+        <Button
+          asChild
+          variant="outline hover:bg-border"
+          className="absolute z-0 rounded-l-full h-[70px] w-[70px] bg-border group-hover:animate-shake"
+        >
+          {isLocked ? <Lock /> : <Unlock />}
+        </Button>
+      </div>
+    ) : null;
+  };
+
   return (
     <Card
       className={
@@ -47,36 +85,12 @@ export function LessonCard(props) {
     >
       {/* <Button onClick={() => updateProgress(1, "unit2", 5)}>test</Button> */}
       <CardHeader className="pt-4 group">
-        {props.connectorAlign == "right" ? (
-          <div className="relative ml-auto translate-x-6 translate-y-3 ">
-            <Button
-              asChild
-              variant="outline hover:bg-border"
-              className="absolute z-50 rounded-r-full h-[70px] w-[70px] bg-border animate-wiggle"
-            >
-              <Unlock />
-            </Button>
-          </div>
-        ) : props.connectorAlign == "left" ? (
-          <div className="relative mr-auto -translate-x-24 translate-y-3 ">
-            <Button
-              asChild
-              variant="outline hover:bg-border"
-              className="absolute rounded-l-full h-[70px] w-[70px] bg-border"
-            >
-              <Lock className="group-hover:animate-shake" />
-            </Button>
-          </div>
-        ) : null}
-
-        <CardTitle className="group text-center font-firacode tracking-wide flex">
-          <Button
-            onClick={showLesson}
-            variant="outline"
-            className="text-3xl font-semibold flex-grow p-10"
-          >
-            {props.title}
-          </Button>
+        <LockIcon
+          connectorAlign={props.connectorAlign}
+          isLocked={props.isLocked}
+        />
+        <CardTitle className="group z-0 text-center font-firacode tracking-wide flex">
+          <LessonButton title={props.title} isLocked={props.isLocked} />
         </CardTitle>
       </CardHeader>
 

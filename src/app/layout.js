@@ -1,14 +1,12 @@
 "use client";
 import "./global.css";
-import { useState, useContext, useRef } from "react";
+import { useState } from "react";
 import { Fira_Code, Nunito_Sans } from "next/font/google";
 import { ThemeProvider } from "./components/theme-provider";
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation"; // Import your pathname utility
-import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context";
 
 import Navbar from "./components/Navbar";
 import { AuthContextProvider } from "./context/AuthContext";
+import NextTopLoader from "nextjs-toploader";
 
 const firacode = Fira_Code({
   subsets: ["latin"],
@@ -30,24 +28,12 @@ export const metadata = {
   },
 };
 
-function FrozenRouter(props) {
-  const context = useContext(LayoutRouterContext);
-  const frozen = useRef(context).current;
-
-  return (
-    <LayoutRouterContext.Provider value={frozen}>
-      {props.children}
-    </LayoutRouterContext.Provider>
-  );
-}
-
 export default function RootLayout({ children }) {
   const [isChecked, setIsChecked] = useState(false);
   const handleCheck = (event) => {
     setIsChecked(event.target.checked);
     console.log("Checkbox is checked:", event.target.checked);
   };
-  const pathname = usePathname();
 
   return (
     <html
@@ -63,6 +49,11 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Navbar handleCheck={handleCheck} />
+            <NextTopLoader
+              showSpinner={false}
+              color="hsl(142.1 76.2% 36.3%)"
+              height={4}
+            />
             {children}
           </ThemeProvider>
         </AuthContextProvider>
