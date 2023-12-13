@@ -1,7 +1,7 @@
 
 import { Button } from "./ui/button";
 
-function QuizComponent ({MainQuestion, SubQuestion, Options, Answer, CodeContent}) {
+function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
     const checkAns = (option) => {
         if (option == Answer) {
           console.log("correct");
@@ -22,12 +22,6 @@ function QuizComponent ({MainQuestion, SubQuestion, Options, Answer, CodeContent
                     )
                     })
                 }
-            </div>
-            <div>
-                {CodeContent &&
-                CodeContent.split("\\n").map((Code, index)=>{
-                    return <div key ={index}>{Code}</div>
-                })}
             </div>
             <div>
                 {
