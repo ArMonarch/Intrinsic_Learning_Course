@@ -23,14 +23,14 @@ export default async function courses() {
       {CourseList.map((course, index) => {
         if (index % 2) {
           return (
-            <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
-              <div className="place-self-center"></div>
-              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-start" />
-            </div>
+           <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
+              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-end" /><div className="place-self-center"></div>
+            </div> 
         )} else {
           return (
             <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
-              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-end" /><div className="place-self-center"></div>
+              <div className="place-self-center"></div>
+              <LessonCard courseTitle={course.name} courseId={course.id} alignment="justify-self-start" />
             </div>
           )
         }

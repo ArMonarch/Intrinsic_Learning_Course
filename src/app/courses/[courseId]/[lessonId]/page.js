@@ -22,14 +22,10 @@ function getLessons(data, unitName) {
 
 async function SubLessons({params, searchParams}) {
     const courseLessons = await getCourseLessons(searchParams.courseId)
-    const courseLesson = getLessons(courseLessons, searchParams.lessonName) 
-
+    const courseLesson = getLessons(courseLessons, searchParams.lessonName)
     return(
-        <div><LessonAndQuizComponent Lessons={courseLesson}/></div>
-         
+        <div><LessonAndQuizComponent Lessons={courseLesson}/></div>   
     );
 };
-
-// export async function getServerSideProps({ query }){}
 
 export default SubLessons;
