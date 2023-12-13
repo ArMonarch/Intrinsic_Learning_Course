@@ -10,6 +10,7 @@ async function getCourseList() {
       cache: "no-store",
     });
     const Data = res.json();
+    console.log(Data);
     if (!Data.error) {
       return Data;
     } else {
@@ -26,32 +27,38 @@ export default async function courses() {
     return Courses.data;
   });
   return (
-    <main className="mx-12 my-8">
-      {CourseList.map((course, index) => {
-        if (index % 2) {
-          return (
-            <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
-              <LessonCard
-                courseTitle={course.name}
-                courseId={course.id}
-                alignment="justify-self-end"
-              />
-              <div className="place-self-center"></div>
-            </div>
-          );
-        } else {
-          return (
-            <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
-              <div className="place-self-center"></div>
-              <LessonCard
-                courseTitle={course.name}
-                courseId={course.id}
-                alignment="justify-self-start"
-              />
-            </div>
-          );
-        }
-      })}
+    <main className="mx-64 my-8 gap-y-12">
+      <div>
+        {CourseList.map((course, index) => {
+          if (index % 2) {
+            return (
+              <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
+                <div className="place-self-center"></div>
+                <LessonCard
+                  courseTitle={course.name}
+                  courseId={course.id}
+                  isLocked={course.isLocked}
+                  alignment="justify-self-end"
+                  connectorAlign=""
+                />
+                <div className="place-self-center"></div>
+              </div>
+            );
+          } else {
+            return (
+              <div key={index} className="grid grid-cols-2 gap-8 gap-x-40">
+                <LessonCard
+                  courseTitle={course.name}
+                  courseId={course.id}
+                  isLocked={course.isLocked}
+                  alignment="justify-self-start"
+                  connectorAligh="right"
+                />
+              </div>
+            );
+          }
+        })}
+      </div>
     </main>
   );
 }

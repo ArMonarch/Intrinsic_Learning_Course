@@ -42,7 +42,7 @@ export function LessonCard(props) {
     return isActive ? setActive(false) : setActive(true);
   };
 
-  const LessonButton = ({ isLocked, title }) => {
+  const LessonButton = ({ isLocked }) => {
     return (
       <Button
         disabled={isLocked}
@@ -61,7 +61,7 @@ export function LessonCard(props) {
         <Button
           asChild
           variant="outline hover:bg-border"
-          className="absolute z-0 rounded-r-full h-[70px] w-[70px] bg-border "
+          className="absolute z-0 rounded-r-full h-[70px] w-[70px] bg-border"
         >
           {isLocked ? <Lock /> : <Unlock />}
         </Button>

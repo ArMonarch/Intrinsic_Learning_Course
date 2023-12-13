@@ -3,12 +3,17 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 export function Drawer(props) {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheck = (event) => {
+    setIsChecked(event.target.checked);
+    console.log("Checkbox is checked:", event.target.checked);
+  };
   return (
     <div className="flex">
       <input
         type="checkbox"
         id="drawer-toggle"
-        onChange={props.handleCheck}
+        onChange={handleCheck}
         className="hidden peer"
       />
 
