@@ -10,7 +10,6 @@ async function getCourseList() {
       cache: "no-store",
     });
     const Data = res.json();
-    console.log(Data);
     if (!Data.error) {
       return Data;
     } else {
