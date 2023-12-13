@@ -8,7 +8,7 @@ function QuizComponent ({MainQuestion, SubQuestion, Options}) {
             </div>
             <div>
                 {
-                    SubQuestion.split("\n").map((value ,index) => {
+                    SubQuestion.split("\\n").map((value ,index) => {
                     return(
                     <div key={index}>{value}</div>
                     )
