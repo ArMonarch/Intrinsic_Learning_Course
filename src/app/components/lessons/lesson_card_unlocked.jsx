@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { firaCode } from "@/app/layout";
 import { Lock, Unlock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +50,7 @@ export function LessonCard(props) {
         variant="outline"
         className="text-3xl font-semibold flex-grow p-10 hover:scale-105 transition-transform duration-300"
       >
-        {title}
+        {props.courseTitle}
       </Button>
     );
   };
