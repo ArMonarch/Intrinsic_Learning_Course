@@ -64,6 +64,6 @@
   }
 }
 
-.min-h-blockmode{
+.min-h-blockmode {
   min-height: calc(100vh - 100px);
 }

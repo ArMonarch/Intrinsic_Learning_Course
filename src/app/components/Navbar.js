@@ -1,14 +1,15 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
-import { ModeToggle } from "./ui/theme-toggle";
-import { Button } from "./ui/button";
+import { ModeToggle } from "../../components/ui/theme-toggle";
+import { Button } from "@/components/ui/button";
+
 import { Drawer } from "./navbar/drawer";
 import { Badge } from "@/components/ui/badge";
+import { ProfileMenu } from "./navbar/profileMenu";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { user, googleSignIn, logOut } = UserAuth();
 
   const handleSignIn = async () => {
@@ -47,23 +48,12 @@ const Navbar = () => {
     console.log(res);
   };
 
-  const [isChecked, setIsChecked] = useState(false);
-  const handleCheck = (event) => {
-    setIsChecked(event.target.checked);
-    console.log("Checkbox is checked:", event.target.checked);
-  };
-
   return (
-    <div className=" sticky top-0">
-      <Drawer handleCheck={handleCheck} />
+    <div className="sticky top-0 z-50">
+      <Drawer handleCheck={props.handleCheck} />
       <div className="flex flex-row space-x-4 p-3 bg-muted ">
         {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
-        <text
-          variant="ghost"
-          className="invisible flex-grow right- text-3xl font-extrabold"
-        >
-          Learn
-        </text>
+        <div className="invisible flex-grow" />
         {/* DO NOT TOUCH, FEATURE NOT A BUG */}
 
         <Button variant="link" asChild>
@@ -76,13 +66,6 @@ const Navbar = () => {
           </Button>
         )}
 
-        {/* put this into the drawer later if time  */}
-        {user ? (
-          <Button variant="link" asChild>
-            <Link href="/profile">Profile</Link>
-          </Button>
-        ) : null}
-
         <Button variant="link" onClick={sendEmail}>
           Send
         </Button>
@@ -91,12 +74,10 @@ const Navbar = () => {
           <Button onClick={handleSignIn}>Login</Button>
         ) : (
           <div className="flex space-x-4">
-            <Badge variant="outline" className="bg-background text-md">
-              {user.displayName}
-            </Badge>
-            <Button onClick={handleSignOut} className="font-semibold">
-              Sign Out
-            </Button>
+            <ProfileMenu
+              userName={user.displayName}
+              handleSignOut={handleSignOut}
+            />
           </div>
         )}
       </div>
