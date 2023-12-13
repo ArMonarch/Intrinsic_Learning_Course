@@ -15,7 +15,7 @@ async function getCourseLessons (id) {
 
 function getLessons(data, unitName) {
     for(const item of data){
-        if (item.unit === unitName){return item.uContent}
+        if (item.unit === unitName){return item.content}
         else {return null}
     }
 }

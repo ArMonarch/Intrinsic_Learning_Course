@@ -25,7 +25,8 @@ export function LessonAndQuizComponent ({Lessons}) {
         }
     }
 
-    const {ComponentType, MainQuestion, SubQuestion, Options, Text, ListStatus, ListValues, Answer, CodeContent } = currentComponentValue;
+    const {ComponentType, MainQuestion, Options, Answer ,Title, Text, ListStatus, ListValues, Code, Examples } = currentComponentValue;
+    // console.log(Examples)
     return (
         <div className="flex flex-col h-full">
             <div className="flex flex-col h-full items-center">
@@ -33,9 +34,9 @@ export function LessonAndQuizComponent ({Lessons}) {
                     <div className="flex flex-col">
                         { 
                             ComponentType == "Quiz" ? (
-                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={SubQuestion} Options={Options} Answer = {Answer} CodeContent = {CodeContent}/>
+                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer}/>
                             ) : (
-                                <LessonComponent Texts={Text} ListStatus={ListStatus} ListValues={ListValues} CodeContent = {CodeContent} />
+                                <LessonComponent Title={Title} Texts={Text} ListStatus={ListStatus} ListValues={ListValues} Code={Code} Examples={Examples} />
                             )
                         }
                         <div className=" mt-10 flex justify-between"><Button className="" onClick={handelPreviousValue}>Previous</Button><Button className="" onClick={handelNextValue} >Continue</Button></div>
