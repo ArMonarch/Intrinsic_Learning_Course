@@ -1,17 +1,15 @@
-import { firacode } from "@/app/layout";
-
-function UnitContex({Texts, ListStatus, ListValues}) {
+function LessonComponent({Texts, ListStatus, ListValues}) {
     return(
         <div className={`flex flex-col w-[700px]`}>
-            {
-            Texts.map(
+            {Texts &&
+            Texts.split('\\n').map(
                 (Text, index) => {
                     return(<div key={index}>{Text}</div>);
                 })
             }
             {ListStatus && 
             <ul className="list-disc pl-5">
-                {ListValues.map((ListValue, index) => {
+                {ListValues.split('\\n').map((ListValue, index) => {
                     return(<li key={index}>{ListValue}</li>)
                 })}
             </ul>}
@@ -19,4 +17,4 @@ function UnitContex({Texts, ListStatus, ListValues}) {
     )
 }
 
-export default UnitContex;
+export default LessonComponent;
