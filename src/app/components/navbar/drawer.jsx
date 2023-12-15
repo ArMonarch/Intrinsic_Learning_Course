@@ -1,6 +1,10 @@
 "use client";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { ScrollAreaDemo } from "./achievementScroll";
+import { Avatar } from "@/components/peepAvatars";
+import { Separator } from "@/components/ui/separator";
+import { PeepAvatar } from "@/components/peepAvatars";
 
 export function Drawer(props) {
   const [isChecked, setIsChecked] = useState(false);
@@ -19,7 +23,7 @@ export function Drawer(props) {
 
       <label
         htmlFor="drawer-toggle"
-        className="absolute left-0 top-3 z-10 inline-block bg-muted p-2 transition-transormation duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-80"
+        className="absolute left-0 top-3 z-10 inline-block bg-muted p-2 transition-transormation duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-[512px]"
       >
         <text
           variant="ghost"
@@ -30,8 +34,13 @@ export function Drawer(props) {
         <ChevronRight className="peer-checked:group-[]:rotate-180 transition-transform duration-500 " />
       </label>
 
-      <div className="fixed z-50 top-0 left-0 w-80 h-full transition-all duration-500 transform -translate-x-full bg-muted  border-r-4 rounded-r-xl dark:shadow-primary peer-checked:translate-x-0 ">
-        {/* <div className="px-6 py-4"></div> */}
+      <div className="fixed flex flex-col justify-end z-50 top-0 left-0 w-1/3 h-full transition-all duration-500 transform -translate-x-full bg-muted  border-r-4 rounded-r-xl dark:shadow-primary peer-checked:translate-x-0 ">
+        <PeepAvatar />
+        <h1 className="text-3xl text-center mb-4 font-firacode">Username</h1>
+        <Separator className="my-4" />
+        <div className="mb-10 mx-auto h-72 w-4/5">
+          <ScrollAreaDemo />
+        </div>
       </div>
     </div>
   );
