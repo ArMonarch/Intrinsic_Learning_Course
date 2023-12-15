@@ -16,8 +16,8 @@ const styles = {
     alignSelf: "center",
     borderRadius: 135,
     overflow: "hidden",
-    borderWidth: 3,
-    borderColor: "black",
+    borderWidth: 4,
+    borderColor: "grey",
     borderStyle: "solid",
   },
   showcaseWrapper: {
@@ -27,6 +27,20 @@ const styles = {
   },
 };
 
-export function Avatar() {
-  return <div></div>;
+export function PeepAvatar() {
+  return (
+    <div style={styles.showcaseWrapper}>
+      <Peep
+        style={styles.peepStyle}
+        circleStyle={styles.circleStyle}
+        accessory="GlassRoundThick"
+        body="Shirt"
+        face="Cute"
+        hair="ShortVolumed"
+        facialHair="Dali"
+        strokeColor=""
+        viewBox={{ x: "0", y: "0", width: "1050", height: "1200" }}
+      ></Peep>
+    </div>
+  );
 }
