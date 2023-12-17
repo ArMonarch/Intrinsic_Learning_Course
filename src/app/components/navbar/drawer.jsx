@@ -2,9 +2,9 @@
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { ScrollAreaDemo } from "./achievementScroll";
-import { Avatar } from "@/components/peepAvatars";
 import { Separator } from "@/components/ui/separator";
 import { PeepAvatar } from "@/components/peepAvatars";
+import { EditAvatar } from "./editAvatar";
 
 export function Drawer(props) {
   const [isChecked, setIsChecked] = useState(false);
@@ -36,7 +36,10 @@ export function Drawer(props) {
 
       <div className="fixed flex flex-col justify-end z-50 top-0 left-0 w-1/3 h-full transition-all duration-500 transform -translate-x-full bg-muted  border-r-4 rounded-r-xl dark:shadow-primary peer-checked:translate-x-0 ">
         <PeepAvatar />
-        <h1 className="text-3xl text-center mb-4 font-firacode">Username</h1>
+        <div className="mb-4 flex justify-center flex-row">
+          <h1 className="text-3xl text-center font-firacode">Username</h1>
+          <EditAvatar />
+        </div>
         <Separator className="my-4" />
         <div className="mb-10 mx-auto h-72 w-4/5">
           <ScrollAreaDemo />
