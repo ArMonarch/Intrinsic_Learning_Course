@@ -1,25 +1,15 @@
 "use client";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { ScrollAreaDemo } from "./achievementScroll";
+import { AchievementScroll } from "./achievementScroll";
 import { Separator } from "@/components/ui/separator";
 import { PeepAvatar } from "@/components/peepAvatars";
 import { EditAvatar } from "./editAvatar";
 
-export function Drawer(props) {
-  const [isChecked, setIsChecked] = useState(false);
-  const handleCheck = (event) => {
-    setIsChecked(event.target.checked);
-    console.log("Checkbox is checked:", event.target.checked);
-  };
+export function Drawer() {
   return (
     <div className="flex">
-      <input
-        type="checkbox"
-        id="drawer-toggle"
-        onChange={handleCheck}
-        className="hidden peer"
-      />
+      <input type="checkbox" id="drawer-toggle" className="hidden peer" />
 
       <label
         htmlFor="drawer-toggle"
@@ -42,7 +32,7 @@ export function Drawer(props) {
         </div>
         <Separator className="my-4" />
         <div className="mb-10 mx-auto h-72 w-4/5">
-          <ScrollAreaDemo />
+          <AchievementScroll />
         </div>
       </div>
     </div>

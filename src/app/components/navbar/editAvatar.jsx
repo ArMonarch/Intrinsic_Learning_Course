@@ -17,6 +17,14 @@ import {
 } from "@/components/ui/select";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { LucideEdit } from "lucide-react";
+import useAvatar from "./avatarStore";
+import {
+  SelectBody,
+  SelectHair,
+  SelectFace,
+  SelectAccessory,
+  SelectFacialHair,
+} from "./editSelectors";
 
 export function EditAvatar() {
   return (
@@ -31,37 +39,22 @@ export function EditAvatar() {
           <DialogTitle>Edit Avatar</DialogTitle>
           <DialogDescription>Customize your Avatar</DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Select>
-              <SelectTrigger className="w-auto">
-                <SelectValue placeholder="Select Hair" className="text-sm" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger className="">
-                <SelectValue placeholder="Select Face" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
-              </SelectContent>
-            </Select>
+        <div className="grid gap-4 gap-y-8 py-4">
+          <div className="grid grid-cols-3 items-center gap-4 mx-8">
+            <SelectHair />
+            <SelectFace />
+            <SelectBody />
           </div>
 
-          <div className="grid grid-cols-4 items-center gap-4"></div>
+          <div className="grid grid-cols-2 items-center gap-4 mx-28">
+            <SelectAccessory />
+            <SelectFacialHair />
+          </div>
         </div>
         <DialogFooter>
-          <DialogClose>
+          {/* <DialogClose>
             <Button type="submit">Save changes</Button>
-          </DialogClose>
+          </DialogClose> */}
         </DialogFooter>
       </DialogContent>
     </Dialog>

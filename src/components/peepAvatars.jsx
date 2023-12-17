@@ -1,4 +1,5 @@
-import React from "react";
+import useAvatar from "@/app/components/navbar/avatarStore";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import Peep from "react-peeps";
 
@@ -28,16 +29,21 @@ const styles = {
 };
 
 export function PeepAvatar() {
+  const accessory = useAvatar((state) => state.accessory);
+  const body = useAvatar((state) => state.body);
+  const face = useAvatar((state) => state.face);
+  const hair = useAvatar((state) => state.hair);
+  const facialHair = useAvatar((state) => state.facialHair);
   return (
     <div style={styles.showcaseWrapper}>
       <Peep
         style={styles.peepStyle}
         circleStyle={styles.circleStyle}
-        accessory="GlassRoundThick"
-        body="Shirt"
-        face="Cute"
-        hair="ShortVolumed"
-        facialHair="Dali"
+        accessory={accessory}
+        body={body}
+        face={face}
+        hair={hair}
+        facialHair={facialHair}
         strokeColor=""
         viewBox={{ x: "0", y: "0", width: "1050", height: "1200" }}
       ></Peep>

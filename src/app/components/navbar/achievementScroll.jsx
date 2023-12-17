@@ -9,7 +9,7 @@ const achievements = Array.from({ length: 50 }).map(
   (_, i, a) => `achievement.${a.length - i}`
 );
 
-export function ScrollAreaDemo() {
+export function AchievementScroll() {
   return (
     <ScrollArea className="h-72 w-auto rounded-md border-4">
       <div className="p-4">
