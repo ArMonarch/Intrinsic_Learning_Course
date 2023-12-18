@@ -4,13 +4,26 @@ import QuizComponent from "./QuizComponent";
 import LessonComponent from "./LessonComponent";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import { UserAuth } from "@/app/context/AuthContext";
+
 
 export function LessonAndQuizComponent ({Lessons}) {
-
+    const {user} = UserAuth()
     const ComponentValues = Lessons
 
     const [currentIndex, changeIndex] = useState(0)
     const [currentComponentValue, changeComponentValue] = useState(ComponentValues[0])
+
+  
+
+    const completeLesson = async() =>{
+        const res = fetch(`http://localhost:8081/users/userCompletesUnit`,{
+            method:"POST",
+            data:JSON.stringify(completed)
+        })
+    }
+        
+    
 
     function handelNextValue(){
         if (currentIndex < ComponentValues.length - 1) {

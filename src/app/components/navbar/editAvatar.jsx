@@ -25,8 +25,34 @@ import {
   SelectAccessory,
   SelectFacialHair,
 } from "./editSelectors";
+import { UserAuth } from "@/app/context/AuthContext";
 
 export function EditAvatar() {
+  const {user} = UserAuth()
+  const accessory = useAvatar((state) => state.updateAccessory);
+  const body = useAvatar((state) => state.updateBody);
+  const face = useAvatar((state) => state.updateFace);
+  const hair = useAvatar((state) => state.updateHair);
+  const facialHair = useAvatar((state) => state.updatefacialHair);
+  const avstate = {
+    userId:user.uid,
+    accessory ,
+    body,
+    face,
+    hair,
+    facialHair
+  }
+
+  const setAvatar = async() =>{
+    await fetch(`http://localhost:8081/users/storeAvatar`, {
+      method:'POST',
+      //mode: 'cors',
+      body:JSON.stringify(avstate)
+    })
+    console.log(JSON.stringify(avstate))
+  }
+  
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -52,7 +78,7 @@ export function EditAvatar() {
           </div>
         </div>
         <DialogFooter>
-          <Button className="mx-auto" type="submit">
+          <Button className="mx-auto" type="submit" onClick = {async()=> await setAvatar()}>
             Save changes
           </Button>
         </DialogFooter>

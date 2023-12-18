@@ -49,7 +49,7 @@ export function AchievementScroll() {
           Achievements
         </h4>
        
-        {achievements.map((achievement,tag) => (
+        { achievements.map((achievement,tag) => (
           <>
             <Card key={tag} className="text-sm border-2">
               <CardHeader className="p-3">{achievement.title}</CardHeader>
@@ -59,7 +59,7 @@ export function AchievementScroll() {
             </Card>
             <Separator className="my-2" />
           </>
-        ))}
+        )) }
       </div>
     </ScrollArea>
   );

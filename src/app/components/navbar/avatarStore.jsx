@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import React from "react";
 
 const useAvatar = create((set) => ({
   accessory: "None",
@@ -7,11 +8,17 @@ const useAvatar = create((set) => ({
   hair: "Bald",
   facialHair: "None",
 
+  
+  
+
   updateAccessory: (accessory) => set(() => ({ accessory: accessory })),
   updateBody: (body) => set(() => ({ body: body })),
   updateFace: (face) => set(() => ({ face: face })),
   updateHair: (hair) => set(() => ({ hair: hair })),
   updatefacialHair: (fHair) => set(() => ({ facialHair: fHair })),
-}));
+})
+
+
+);
 
 export default useAvatar;
