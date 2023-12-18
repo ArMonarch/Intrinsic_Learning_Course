@@ -1,15 +1,17 @@
-function LessonComponent({Title, Texts, ListStatus, ListValues, Code, Examples }) {
+import Code from "./Code";
+
+function LessonComponent({Title, Texts, ListStatus, ListValues, code, Examples }) {
   return (
     <div className={`flex flex-col w-[700px]`}>
-      <div>{Title}</div>
+      <div className="text-xl font-bold">{Title}</div>
       {Texts &&
         Texts.split("\\n").map((Text, index) => {
           return <div key={index}>{Text}</div>;
         })}
 
-        {Code &&
-            Code.split("\\n").map((Code, index)=>{
-                return <div key ={index}>{Code}</div>
+        {code &&
+            code.split("\\n").map((code, index)=>{
+                return <div key ={index}><Code code ={code}/></div>
             })
         }
       {ListStatus && (
@@ -24,7 +26,7 @@ function LessonComponent({Title, Texts, ListStatus, ListValues, Code, Examples }
         return(
           <div key={index}>
             <div >Example:</div>
-            {Example.Code && Example.Code.split("\\n").map((code,index) => {return (<div key={index}>{code}</div>)})}
+            {Example.Code && Example.Code.split("\\n").map((code,index) => {return (<div key={index}><Code code ={code}/></div>)})}
             {Example.Text && Example.Text.split("\\n").map((text,index) => {return (<div key={index}>{text}</div>)})}
           </div>
         )

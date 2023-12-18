@@ -16,7 +16,9 @@ export function LessonAndQuizComponent ({Lessons}) {
         if (currentIndex < ComponentValues.length - 1) {
             changeComponentValue(ComponentValues[currentIndex+1])
             changeIndex(currentIndex+1)
-        } 
+        }else{
+            console.log("submit")
+        }
     }
     function handelPreviousValue () {
         if (!currentIndex == 0){
@@ -34,12 +36,12 @@ export function LessonAndQuizComponent ({Lessons}) {
                     <div className="flex flex-col">
                         { 
                             ComponentType == "Quiz" ? (
-                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer}/>
+                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer} nextLesson={handelNextValue}/>
                             ) : (
-                                <LessonComponent Title={Title} Texts={Text} ListStatus={ListStatus} ListValues={ListValues} Code={Code} Examples={Examples} />
+                                <LessonComponent Title={Title} Texts={Text} ListStatus={ListStatus} ListValues={ListValues} code={Code} Examples={Examples} />
                             )
                         }
-                        <div className=" mt-10 flex justify-between"><Button className="" onClick={handelPreviousValue}>Previous</Button><Button className="" onClick={handelNextValue} >Continue</Button></div>
+                        <div className=" mt-10 flex justify-between"><Button id='submitChange' className="" onClick={handelPreviousValue}>Previous</Button><Button className="" onClick={handelNextValue} >Continue</Button></div>
                     </div>
                 </div>
             </div>
