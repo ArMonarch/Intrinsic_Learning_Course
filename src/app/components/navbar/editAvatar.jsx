@@ -52,9 +52,9 @@ export function EditAvatar() {
           </div>
         </div>
         <DialogFooter>
-          {/* <DialogClose>
-            <Button type="submit">Save changes</Button>
-          </DialogClose> */}
+          <Button className="mx-auto" type="submit">
+            Save changes
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
