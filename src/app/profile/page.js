@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import ProfileCard from "../components/navbar/ProfileCard";
 

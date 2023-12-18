@@ -11,7 +11,7 @@ const ProfileCard = () => {
       const data = await updateExp(user);
       setExp(data);
     })();
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex flex-col gap-2">

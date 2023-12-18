@@ -112,8 +112,7 @@ export function LessonCard(props) {
                   .replace(/ /g, "")}/${lesson.unit
                   .toLowerCase()
                   .replace(/ /g, "")}?courseId=${props.courseId}&lessonName=${
-                  lesson.unit
-                }`}
+                  lesson.unit}&lessonId=${lesson.id}`}
               >
                 {lesson.unit}
               </Link>
