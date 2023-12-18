@@ -51,7 +51,10 @@ const Navbar = (props) => {
 
   return (
     <div className="sticky top-0 z-50">
-      <Drawer handleCheck={props.handleCheck} />
+      {!user? null : (
+        <Drawer handleCheck={props.handleCheck} />
+      )}
+      
       <div className="flex flex-row space-x-4 p-3 bg-muted ">
         {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
         <div className="invisible flex-grow" />
