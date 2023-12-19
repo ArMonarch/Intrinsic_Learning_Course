@@ -9,9 +9,11 @@ const ProfileCard = () => {
   useEffect(() => {
     (async () => {
       const data = await updateExp(user);
+      console.log(user.uid)
+      console.log(user.email)
       setExp(data);
     })();
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex flex-col gap-2">

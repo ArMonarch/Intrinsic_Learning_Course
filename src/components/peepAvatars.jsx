@@ -1,6 +1,5 @@
+'use client';
 import useAvatar from "@/app/components/navbar/avatarStore";
-import React, { useState, useContext } from "react";
-import ReactDOM from "react-dom";
 import Peep from "react-peeps";
 
 const styles = {
@@ -29,6 +28,7 @@ const styles = {
 };
 
 export function PeepAvatar() {
+  // Get Values for peeps from useAvatar  
   const accessory = useAvatar((state) => state.accessory);
   const body = useAvatar((state) => state.body);
   const face = useAvatar((state) => state.face);
