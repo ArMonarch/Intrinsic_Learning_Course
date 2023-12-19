@@ -7,16 +7,15 @@ function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
     const {user} = UserAuth()
     const postData = {
         uid: user.uid,
-        exp: 10
+        exp: 2
     }
     const checkAnswer = async (option) => {
         if (option === Answer){
-                toast(" ✅ Correct, You Earned 10 Xp!!");
+                toast(" ✅ Correct, You Earned 2 Xp!!");
                 const res = await fetch(`http://localhost:8081/users/addExperience`, {
                     method: 'POST',
                     headers:{"Content-Type":"application/json"},
                     body:JSON.stringify(postData)})
-                    console.log(JSON.stringify(postData))
                     try{
                         const Data = await res.json()
                         if (Data.data){console.log("Sucessful")}else{}
