@@ -8,13 +8,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { LucideEdit } from "lucide-react";
 import useAvatar from "./avatarStore";
@@ -29,38 +22,23 @@ import { UserAuth } from "@/app/context/AuthContext";
 
 export function EditAvatar() {
   const {user} = UserAuth()
-  // const accessory = useAvatar((state) => state.updateAccessory);
-  // const body = useAvatar((state) => state.updateBody);
-  // const face = useAvatar((state) => state.updateFace);
-  // const hair = useAvatar((state) => state.updateHair);
-  // const facialHair = useAvatar((state) => state.updatefacialHair);
-  const accessory = useAvatar((state) => state.accessory);
-  const body = useAvatar((state) => state.body);
-  const face = useAvatar((state) => state.face);
-  const hair = useAvatar((state) => state.hair);
-  const facialHair = useAvatar((state) => state.facialHair);
+  const {face, body, hair, facialHair, accessory} = useAvatar()
 
-  const avstate = {
+  const userAvater = {
     userId:user.uid,
-    accessory ,
+    accessory,
     body,
     face,
     hair,
     facialHair
   }
-  const stringavstate = JSON.stringify(avstate)
 
-  const setAvatar = async() =>{
+  const changeAvatar = async() =>{
     await fetch(`http://localhost:8081/users/storeAvatar`, {
       method:'POST',
-      //mode: 'cors',
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body:stringavstate
+      headers: {"Content-Type": "application/json",},
+      body:JSON.stringify(userAvater)
     })
-    console.log(stringavstate)
   }
   
 
@@ -89,7 +67,7 @@ export function EditAvatar() {
           </div>
         </div>
         <DialogFooter>
-          <Button className="mx-auto" type="submit" onClick = {async()=> await setAvatar()}>
+          <Button className="mx-auto" type="submit" onClick = {async()=> {await changeAvatar()}}>
             Save changes
           </Button>
         </DialogFooter>

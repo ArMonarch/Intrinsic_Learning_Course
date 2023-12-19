@@ -81,7 +81,7 @@ export function SelectAccessory() {
 }
 
 export function SelectFacialHair() {
-  const updatefacialHair = useAvatar((state) => state.updatefacialHair);
+  const updatefacialHair = useAvatar((state) => state.updateFacialHair);
   return (
     <Select onValueChange={(value) => updatefacialHair(value)}>
       <SelectTrigger className="w-auto">
