@@ -14,6 +14,7 @@ import { UserAuth } from "@/app/context/AuthContext";
 
 
 
+
 const useAvatar = create((set) => ({
   accessory: "None",
   body: "Shirt",
