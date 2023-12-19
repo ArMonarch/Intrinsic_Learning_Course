@@ -32,8 +32,9 @@ async function getCourseLesson (id) {
 async function SubLessons({params, searchParams}) {
     const courseLessons = await getCourseLessons(searchParams.courseId)
     const courseLesson = getLessons(courseLessons, searchParams.lessonName)
+    const lessonId = searchParams.lessonId
     return(
-        <div><LessonAndQuizComponent Lessons={courseLesson}/></div>   
+        <div><LessonAndQuizComponent Lessons={courseLesson} LessonId={lessonId}/></div>   
     );
 };
 

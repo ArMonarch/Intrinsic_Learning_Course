@@ -7,29 +7,31 @@ import { useState } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
 
 
-export function LessonAndQuizComponent ({Lessons}) {
+export function LessonAndQuizComponent ({LessonId, Lessons}) {
     const {user} = UserAuth()
     const ComponentValues = Lessons
 
     const [currentIndex, changeIndex] = useState(0)
     const [currentComponentValue, changeComponentValue] = useState(ComponentValues[0])
 
-  
-
-    const completeLesson = async() =>{
-        const res = fetch(`http://localhost:8081/users/userCompletesUnit`,{
-            method:"POST",
-            data:JSON.stringify(completed)
-        })
-    }
-        
-    
-
-    function handelNextValue(){
+    async function handelNextValue(){
         if (currentIndex < ComponentValues.length - 1) {
             changeComponentValue(ComponentValues[currentIndex+1])
             changeIndex(currentIndex+1)
         }else{
+            const completed = {
+                userId: user.uid,
+                unitId: LessonId
+            }
+            const res = fetch(`http://localhost:8081/users/userCompletesUnit`,
+                {method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(completed)})
+                try{
+                    const Data = await res.json()
+                    if (Data.statusCode == 200){console.log("Success of chapter complete")}
+                    else{}
+                }catch{}
             console.log("submit")
         }
     }
@@ -49,7 +51,7 @@ export function LessonAndQuizComponent ({Lessons}) {
                     <div className="flex flex-col">
                         { 
                             ComponentType == "Quiz" ? (
-                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer} nextLesson={handelNextValue}/>
+                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer} nextLesson={handelNextValue} />
                             ) : (
                                 <LessonComponent Title={Title} Texts={Text} ListStatus={ListStatus} ListValues={ListValues} code={Code} Examples={Examples} />
                             )
