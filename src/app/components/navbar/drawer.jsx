@@ -1,25 +1,39 @@
 "use client";
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
-import { ScrollAreaDemo } from "./achievementScroll";
-import { Avatar } from "@/components/peepAvatars";
+import { useEffect } from "react";
+import { AchievementScroll } from "./achievementScroll";
 import { Separator } from "@/components/ui/separator";
 import { PeepAvatar } from "@/components/peepAvatars";
+import { EditAvatar } from "./editAvatar";
+import { UserAuth } from "@/app/context/AuthContext";
+import useAvatar from "./avatarStore";
 
-export function Drawer(props) {
-  const [isChecked, setIsChecked] = useState(false);
-  const handleCheck = (event) => {
-    setIsChecked(event.target.checked);
-    console.log("Checkbox is checked:", event.target.checked);
-  };
+
+
+export function Drawer() {
+  const {user} = UserAuth()
+  const {updateFace, updateHair, updateBody, updateFacialHair, updateAccessory} = useAvatar();
+  useEffect(() => {
+    // Get User Avatar Properties
+   async function GetUserAvatar(){
+    const res = await fetch(`http://localhost:8081/users/getAvatar?uid=${user.uid}`, {method:"GET", cache:"no-store"})
+    const Data = await res.json()
+    try{
+      if (Data.statusCode === 200){
+        const avatarProps = Data.data
+        updateFace(avatarProps.face)
+        updateHair(avatarProps.hair)
+        updateBody(avatarProps.body)
+        updateFacialHair(avatarProps.facialHair)
+        updateAccessory(avatarProps.accessory)
+      }
+      }catch{}  
+    }
+   GetUserAvatar()
+ },[user,updateFace, updateHair, updateBody, updateFacialHair, updateAccessory])
   return (
     <div className="flex">
-      <input
-        type="checkbox"
-        id="drawer-toggle"
-        onChange={handleCheck}
-        className="hidden peer"
-      />
+      <input type="checkbox" id="drawer-toggle" className="hidden peer" />
 
       <label
         htmlFor="drawer-toggle"
@@ -36,10 +50,13 @@ export function Drawer(props) {
 
       <div className="fixed flex flex-col justify-end z-50 top-0 left-0 w-1/3 h-full transition-all duration-500 transform -translate-x-full bg-muted  border-r-4 rounded-r-xl dark:shadow-primary peer-checked:translate-x-0 ">
         <PeepAvatar />
-        <h1 className="text-3xl text-center mb-4 font-firacode">Username</h1>
+        <div className="mb-4 flex justify-center flex-row">
+          <h1 className="text-3xl text-center font-firacode">{user.displayName}</h1>
+          <EditAvatar />
+        </div>
         <Separator className="my-4" />
         <div className="mb-10 mx-auto h-72 w-4/5">
-          <ScrollAreaDemo />
+          <AchievementScroll />
         </div>
       </div>
     </div>
