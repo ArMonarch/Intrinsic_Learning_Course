@@ -29,11 +29,17 @@ import { UserAuth } from "@/app/context/AuthContext";
 
 export function EditAvatar() {
   const {user} = UserAuth()
-  const accessory = useAvatar((state) => state.updateAccessory);
-  const body = useAvatar((state) => state.updateBody);
-  const face = useAvatar((state) => state.updateFace);
-  const hair = useAvatar((state) => state.updateHair);
-  const facialHair = useAvatar((state) => state.updatefacialHair);
+  // const accessory = useAvatar((state) => state.updateAccessory);
+  // const body = useAvatar((state) => state.updateBody);
+  // const face = useAvatar((state) => state.updateFace);
+  // const hair = useAvatar((state) => state.updateHair);
+  // const facialHair = useAvatar((state) => state.updatefacialHair);
+  const accessory = useAvatar((state) => state.accessory);
+  const body = useAvatar((state) => state.body);
+  const face = useAvatar((state) => state.face);
+  const hair = useAvatar((state) => state.hair);
+  const facialHair = useAvatar((state) => state.facialHair);
+
   const avstate = {
     userId:user.uid,
     accessory ,
@@ -42,14 +48,19 @@ export function EditAvatar() {
     hair,
     facialHair
   }
+  const stringavstate = JSON.stringify(avstate)
 
   const setAvatar = async() =>{
     await fetch(`http://localhost:8081/users/storeAvatar`, {
       method:'POST',
       //mode: 'cors',
-      body:JSON.stringify(avstate)
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body:stringavstate
     })
-    console.log(JSON.stringify(avstate))
+    console.log(stringavstate)
   }
   
 

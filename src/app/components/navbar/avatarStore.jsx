@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import React from "react";
 
+const res = fetch()
+
 const useAvatar = create((set) => ({
   accessory: "None",
   body: "Shirt",
