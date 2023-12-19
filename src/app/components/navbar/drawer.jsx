@@ -5,8 +5,12 @@ import { AchievementScroll } from "./achievementScroll";
 import { Separator } from "@/components/ui/separator";
 import { PeepAvatar } from "@/components/peepAvatars";
 import { EditAvatar } from "./editAvatar";
+import { UserAuth } from "@/app/context/AuthContext";
+
+
 
 export function Drawer() {
+  const {user} = UserAuth()
   return (
     <div className="flex">
       <input type="checkbox" id="drawer-toggle" className="hidden peer" />
@@ -27,7 +31,7 @@ export function Drawer() {
       <div className="fixed flex flex-col justify-end z-50 top-0 left-0 w-1/3 h-full transition-all duration-500 transform -translate-x-full bg-muted  border-r-4 rounded-r-xl dark:shadow-primary peer-checked:translate-x-0 ">
         <PeepAvatar />
         <div className="mb-4 flex justify-center flex-row">
-          <h1 className="text-3xl text-center font-firacode">Username</h1>
+          <h1 className="text-3xl text-center font-firacode">{user.displayName}</h1>
           <EditAvatar />
         </div>
         <Separator className="my-4" />
