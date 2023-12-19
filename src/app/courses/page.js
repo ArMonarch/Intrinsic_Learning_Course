@@ -26,7 +26,7 @@ export default async function courses() {
     return Courses.data;
   });
   return (
-    <main className="mx-48 my-8">
+    <main className="mx-48 my-24">
       {CourseList.map((course, index) => {
         if (index % 2) {
           return (
