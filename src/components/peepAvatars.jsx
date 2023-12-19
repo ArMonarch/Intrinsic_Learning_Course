@@ -1,8 +1,5 @@
 'use client';
 import useAvatar from "@/app/components/navbar/avatarStore";
-import { UserAuth } from "@/app/context/AuthContext";
-import React, { useState, useContext, useEffect } from "react";
-import ReactDOM from "react-dom";
 import Peep from "react-peeps";
 
 const styles = {
@@ -31,35 +28,12 @@ const styles = {
 };
 
 export function PeepAvatar() {
-  const {user} = UserAuth();
+  // Get Values for peeps from useAvatar  
   const accessory = useAvatar((state) => state.accessory);
   const body = useAvatar((state) => state.body);
   const face = useAvatar((state) => state.face);
   const hair = useAvatar((state) => state.hair);
   const facialHair = useAvatar((state) => state.facialHair);
-  // const avstate = {
-  //   userId:user.uid,
-  //   accessory,
-  //   body,
-  //   face,
-  //   hair,
-  //   facialHair
-  // }
-
-  // const setAvatar = async() =>{
-  //   const res = await fetch(`http://localhost:8081/users/storeAvatar`, {
-  //     method:'POST',
-  //     mode: 'cors',
-  //     body:JSON.stringify(avstate)
-  //   })
-  // }
-
-  // useEffect(()=>{
-  //   (async()=>{
-  //     await setAvatar()
-  //   })()
-  // })
-
   return (
     <div style={styles.showcaseWrapper}>
       <Peep

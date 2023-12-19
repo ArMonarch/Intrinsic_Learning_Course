@@ -1,16 +1,36 @@
 "use client";
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect } from "react";
 import { AchievementScroll } from "./achievementScroll";
 import { Separator } from "@/components/ui/separator";
 import { PeepAvatar } from "@/components/peepAvatars";
 import { EditAvatar } from "./editAvatar";
 import { UserAuth } from "@/app/context/AuthContext";
+import useAvatar from "./avatarStore";
 
 
 
 export function Drawer() {
   const {user} = UserAuth()
+  const {updateFace, updateHair, updateBody, updateFacialHair, updateAccessory} = useAvatar();
+  useEffect(() => {
+    // Get User Avatar Properties
+   async function GetUserAvatar(){
+    const res = await fetch(`http://localhost:8081/users/getAvatar?uid=${user.uid}`, {method:"GET", cache:"no-store"})
+    const Data = await res.json()
+    try{
+      if (Data.statusCode === 200){
+        const avatarProps = Data.data
+        updateFace(avatarProps.face)
+        updateHair(avatarProps.hair)
+        updateBody(avatarProps.body)
+        updateFacialHair(avatarProps.facialHair)
+        updateAccessory(avatarProps.accessory)
+      }
+      }catch{}  
+    }
+   GetUserAvatar()
+ },[user,updateFace, updateHair, updateBody, updateFacialHair, updateAccessory])
   return (
     <div className="flex">
       <input type="checkbox" id="drawer-toggle" className="hidden peer" />

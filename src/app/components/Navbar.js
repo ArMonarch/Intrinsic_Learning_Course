@@ -29,7 +29,6 @@ const Navbar = (props) => {
   };
 
   const sendEmail = async () => {
-    //fetch("http://localhost:8081/eService")
     const data = {
       subject: "hello world",
       text: "nodemailer",
