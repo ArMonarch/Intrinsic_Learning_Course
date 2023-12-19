@@ -50,7 +50,7 @@ const Navbar = (props) => {
 
   return (
     <div className="sticky top-0 z-50">
-      {!user ? <DummyLogo /> : <Drawer isDisabled={false} />}
+      {!user ? <DummyLogo /> : <Drawer />}
 
       <div className="flex flex-row space-x-4 p-3 bg-muted ">
         {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
