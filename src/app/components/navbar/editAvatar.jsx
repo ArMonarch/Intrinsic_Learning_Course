@@ -21,26 +21,25 @@ import {
 import { UserAuth } from "@/app/context/AuthContext";
 
 export function EditAvatar() {
-  const {user} = UserAuth()
-  const {face, body, hair, facialHair, accessory} = useAvatar()
+  const { user } = UserAuth();
+  const { face, body, hair, facialHair, accessory } = useAvatar();
 
   const userAvater = {
-    userId:user.uid,
+    userId: user.uid,
     accessory,
     body,
     face,
     hair,
-    facialHair
-  }
+    facialHair,
+  };
 
-  const changeAvatar = async() =>{
+  const changeAvatar = async () => {
     await fetch(`http://localhost:8081/users/storeAvatar`, {
-      method:'POST',
-      headers: {"Content-Type": "application/json",},
-      body:JSON.stringify(userAvater)
-    })
-  }
-  
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userAvater),
+    });
+  };
 
   return (
     <Dialog>
@@ -67,7 +66,13 @@ export function EditAvatar() {
           </div>
         </div>
         <DialogFooter>
-          <Button className="mx-auto" type="submit" onClick = {async()=> {await changeAvatar()}}>
+          <Button
+            className="mx-auto"
+            type="submit"
+            onClick={async () => {
+              await changeAvatar();
+            }}
+          >
             Save changes
           </Button>
         </DialogFooter>

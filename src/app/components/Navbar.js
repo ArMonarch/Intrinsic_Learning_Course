@@ -5,8 +5,8 @@ import { UserAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { ModeToggle } from "../../components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
-
-import { Drawer } from "./navbar/drawer";
+import { ChevronRight } from "lucide-react";
+import { Drawer, DummyLogo } from "./navbar/drawer";
 import { Badge } from "@/components/ui/badge";
 import { ProfileMenu } from "./navbar/profileMenu";
 
@@ -50,10 +50,8 @@ const Navbar = (props) => {
 
   return (
     <div className="sticky top-0 z-50">
-      {!user? null : (
-        <Drawer handleCheck={props.handleCheck} />
-      )}
-      
+      {!user ? <DummyLogo /> : <Drawer />}
+
       <div className="flex flex-row space-x-4 p-3 bg-muted ">
         {/* DO NOT TOUCH, FEATURE NOT A BUG  */}
         <div className="invisible flex-grow" />
