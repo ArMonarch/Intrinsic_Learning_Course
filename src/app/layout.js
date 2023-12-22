@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             <NextTopLoader
               showSpinner={false}
-              color="hsl(142.1 76.2% 36.3%)"
+              color="hsl(262.1 83.3% 57.8%)"
               height={4}
             />
             {children}

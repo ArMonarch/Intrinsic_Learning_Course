@@ -19,7 +19,13 @@ export function SelectHair() {
         <SelectGroup>
           <SelectItem value="Bald">Bald</SelectItem>
           <SelectItem value="Afro">Afro</SelectItem>
-          <SelectItem value="Bangs">Bangs</SelectItem>
+          <SelectItem value="Bangs">Bangs Light</SelectItem>
+          <SelectItem value="BangsFilled">Edna</SelectItem>
+          <SelectItem value="HatHip">Hat</SelectItem>
+          <SelectItem value="Mohawk">Mohawk</SelectItem>
+          <SelectItem value="Beanie">Beanie</SelectItem>
+          <SelectItem value="Hijab">Hijab</SelectItem>
+          <SelectItem value="Bear">Bear</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -36,8 +42,14 @@ export function SelectFace() {
       <SelectContent>
         <SelectGroup>
           <SelectItem value="Smile">Smile</SelectItem>
+          <SelectItem value="Blank">Blank</SelectItem>
           <SelectItem value="Serious">Serious</SelectItem>
           <SelectItem value="SmileTeeth">Nerd</SelectItem>
+          <SelectItem value="Angry">Angry</SelectItem>
+          <SelectItem value="Suspicious">Sus</SelectItem>
+          <SelectItem value="Awe">Awe</SelectItem>
+          <SelectItem value="LoveGrin">Heart Eyes</SelectItem>
+          <SelectItem value="Cyclops">Cyclops</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -56,6 +68,12 @@ export function SelectBody() {
           <SelectItem value="Shirt">Shirt</SelectItem>
           <SelectItem value="Dress">Dress</SelectItem>
           <SelectItem value="PointingUp">Nerd</SelectItem>
+          <SelectItem value="Gaming">Gaming</SelectItem>
+          <SelectItem value="Geek">Coding</SelectItem>
+          <SelectItem value="Coffee">Coffee</SelectItem>
+          <SelectItem value="Sweater">Sweater</SelectItem>
+          <SelectItem value="Whatever">Whatever</SelectItem>
+          <SelectItem value="Killer">Killer</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -71,9 +89,12 @@ export function SelectAccessory() {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
+          <SelectItem value="None">None</SelectItem>
           <SelectItem value="SunglassWayfarer">Shades</SelectItem>
-          <SelectItem value="Eyepatch">Eyepatch</SelectItem>
           <SelectItem value="GlassRoundThick">Nerd</SelectItem>
+          <SelectItem value="GlassAviator">Aviators</SelectItem>
+          <SelectItem value="GlassButterflyOutline">Butterfly</SelectItem>
+          <SelectItem value="Eyepatch">Eyepatch</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -91,9 +112,13 @@ export function SelectFacialHair() {
         <SelectGroup>
           <SelectItem value="None">None</SelectItem>
           <SelectItem value="Handlebars">Handle Bars</SelectItem>
-          <SelectItem value="Full">Full</SelectItem>
+          <SelectItem value="Chin">Chin</SelectItem>
+          <SelectItem value="Goatee">Goatee</SelectItem>
+          <SelectItem value="FullMedium">Full</SelectItem>
+          <SelectItem value="FullMajestic">Majestic</SelectItem>
           <SelectItem value="MoustacheThin">Moustache</SelectItem>
           <SelectItem value="GrayFull">Old</SelectItem>
+          <SelectItem value="MajesticHandlebars">Tycoon</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
