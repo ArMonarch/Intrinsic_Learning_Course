@@ -5,6 +5,7 @@ import LessonComponent from "./LessonComponent";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 
 export function LessonAndQuizComponent ({LessonId, Lessons}) {
@@ -46,12 +47,13 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
     // console.log(Examples)
     return (
         <div className="flex flex-col h-full">
+            <Toaster />
             <div className="flex flex-col h-full items-center">
                 <div className="flex items-center min-h-blockmode">
                     <div className="flex flex-col">
                         { 
                             ComponentType == "Quiz" ? (
-                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer} nextLesson={handelNextValue} />
+                                <QuizComponent MainQuestion={MainQuestion} SubQuestion={Code} Options={Options} Answer={Answer} nextLesson={handelNextValue} Toast={toast}/>
                             ) : (
                                 <LessonComponent Title={Title} Texts={Text} ListStatus={ListStatus} ListValues={ListValues} code={Code} Examples={Examples} />
                             )
