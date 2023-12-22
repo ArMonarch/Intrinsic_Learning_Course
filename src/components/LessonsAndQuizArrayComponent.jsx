@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import userAchievements from "@/lib/userAchivementsStore";
 
 
 export function LessonAndQuizComponent ({LessonId, Lessons}) {
@@ -14,6 +15,8 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
 
     const [currentIndex, changeIndex] = useState(0)
     const [currentComponentValue, changeComponentValue] = useState(ComponentValues[0])
+
+    const updateAchievements = userAchievements((state) => state.updateAchievement)
 
     async function handelNextValue(){
         if (currentIndex < ComponentValues.length - 1) {
@@ -28,9 +31,19 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
                 {method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify(completed)})
+            
+            const getUserAchievements = async(Id) =>{
+                const res = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${Id}`,{method: "GET",cache:'no-store'})
+                const data = await res.json();
+                return data.data;
+            }
                 try{
                     const Data = await res.json()
-                    if (Data.statusCode == 200){console.log("Success of chapter complete")}
+                    if (Data.statusCode == 200){
+                        const achievements = await getUserAchievements()
+                        updateAchievements(achievements)
+                        console.log("Success of chapter complete");
+                }
                     else{}
                 }catch{}
             console.log("submit")
