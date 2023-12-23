@@ -6,40 +6,25 @@ import { Separator } from "@/components/ui/separator";
 import { Card, CardHeader } from "@/components/ui/card";
 import { CardContent } from "../ui/card";
 import { UserAuth } from "../../context/AuthContext";
-
-
-//  const achievements = Array.from({ length: 50 }).map(
-//   (_, i, a) => `achievement.${a.length - i}`
-// );
+import userAchievements from "@/lib/userAchivementsStore";
 
 export function AchievementScroll() {
   const { user } = UserAuth();
-  const [achievements, setAchievements] = useState([]);
+  const achievements = userAchievements((state) => state.achievements)
+  const updateAchievement = userAchievements((state) => state.updateAchievement)
 
   const getUserAchievements = async(user) =>{
-    const res = await fetch(
-      `http://localhost:8081/users/seeAchievement?uid=${encodeURIComponent(
-      user.uid
-      )}`,
-      {
-        method: "GET",
-      }
-      )
-    const data = await res.json()
-  
-    
-    return data.data
+    const res = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${user.uid}`,{method: "GET",cache:'no-store'})
+    const data = await res.json();
+    return data.data;
   }
 
   useEffect(()=>{
     (async()=>{
-      const data = await getUserAchievements(user)
-      console.log(data)
-      console.log(user.uid)
-      setAchievements(data)
-     console.log(user.uid)
+      const data = await getUserAchievements(user);
+      updateAchievement(data? data :[])
     })()
-  }, [])
+  }, [user,achievements,updateAchievement])
 
 
   return (
@@ -50,15 +35,15 @@ export function AchievementScroll() {
         </h4>
        
         { achievements.map((achievement,tag) => (
-          <>
-            <Card key={tag} className="text-sm border-2">
+          <div key={tag}>
+            <Card className="text-sm border-2">
               <CardHeader className="p-3">{achievement.title}</CardHeader>
               <CardContent className="bg-secondary p-2 rounded-b-lg">
                 {achievement.description}
               </CardContent>
             </Card>
             <Separator className="my-2" />
-          </>
+          </div>
         )) }
       </div>
     </ScrollArea>

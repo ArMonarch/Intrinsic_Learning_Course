@@ -1,9 +1,8 @@
 import Code from "./Code";
 import { Button } from "./ui/button";
-import toast, { Toaster } from "react-hot-toast";
 import { UserAuth } from "@/app/context/AuthContext";
 
-function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
+function QuizComponent ({MainQuestion, SubQuestion, Options, Answer, Toast}) {
     const {user} = UserAuth()
     const postData = {
         uid: user.uid,
@@ -11,7 +10,7 @@ function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
     }
     const checkAnswer = async (option) => {
         if (option === Answer){
-                toast(" ✅ Correct, You Earned 2 Xp!!");
+                Toast(" ✅ Correct, You Earned 2 Xp!!");
                 const res = await fetch(`http://localhost:8081/users/addExperience`, {
                     method: 'POST',
                     headers:{"Content-Type":"application/json"},
@@ -21,11 +20,10 @@ function QuizComponent ({MainQuestion, SubQuestion, Options, Answer}) {
                         if (Data.data){console.log("Sucessful")}else{}
                     }catch{}
             }
-        else {toast("❌ Incorrect")}
+        else {Toast("❌ Incorrect")}
       };
     return(
         <div className="flex flex-col w-[700px]">
-            <Toaster />
             <div className="text-xl font-bold">
                 {MainQuestion}
             </div>
