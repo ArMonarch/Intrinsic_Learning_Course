@@ -34,7 +34,7 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
                 }catch{}
             console.log("submit")
         }
-        
+
     }
     function handelPreviousValue () {
         if (!currentIndex == 0){
