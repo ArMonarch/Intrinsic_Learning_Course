@@ -10,22 +10,36 @@ import userAchievements from "@/lib/userAchivementsStore";
 
 export function AchievementScroll() {
   const { user } = UserAuth();
-  const achievements = userAchievements((state) => state.achievements)
-  const updateAchievement = userAchievements((state) => state.updateAchievement)
+  const achievements = userAchievements((state) => state.achievements);
+  const updateAchievement = userAchievements(
+    (state) => state.updateAchievement
+  );
+  const [ach, setAch] = useState();
 
-  const getUserAchievements = async(user) =>{
-    const res = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${user.uid}`,{method: "GET",cache:'no-store'})
+  const getUserAchievements = async (user) => {
+    const res = await fetch(
+      `http://localhost:8081/users/lessonAchivements?uid=${user.uid}`,
+      { method: "GET", cache: "no-store" }
+    );
     const data = await res.json();
     return data.data;
-  }
-
-  useEffect(()=>{
-    (async()=>{
+  };
+  const getAchievement = async (user) => {
+    const res = await fetch(
+      `http://localhost:8081/users/seeAchievement?uid=${user.uid}`
+    );
+    const data = await res.json();
+    return data.data;
+  };
+  useEffect(() => {
+    (async () => {
       const data = await getUserAchievements(user);
-      updateAchievement(data? data :[])
-    })()
-  }, [user,achievements,updateAchievement])
-
+      const data2 = await getAchievement(user);
+      //updateAchievement(data? data :[])
+      updateAchievement(data ? data : []);
+      setAch(data2 ? data2 : []);
+    })();
+  }, [user, achievements, updateAchievement]);
 
   return (
     <ScrollArea className="h-72 w-auto rounded-md border-4">
@@ -33,8 +47,8 @@ export function AchievementScroll() {
         <h4 className="mb-4 text-md font-medium leading-none text-center">
           Achievements
         </h4>
-       
-        { achievements.map((achievement,tag) => (
+
+        {achievements.map((achievement, tag) => (
           <div key={tag}>
             <Card className="text-sm border-2">
               <CardHeader className="p-3">{achievement.title}</CardHeader>
@@ -44,10 +58,19 @@ export function AchievementScroll() {
             </Card>
             <Separator className="my-2" />
           </div>
-        )) }
+        ))}
+        {ach.map((ach, tag) => (
+          <div key={tag}>
+            <Card className="text-sm border-2">
+              <CardHeader className="p-3">{ach.title}</CardHeader>
+              <CardContent className="bg-secondary p-2 rounded-b-lg">
+                {ach.description}
+              </CardContent>
+            </Card>
+            <Separator className="my-2" />
+          </div>
+        ))}
       </div>
     </ScrollArea>
   );
-};
-
-
+}
