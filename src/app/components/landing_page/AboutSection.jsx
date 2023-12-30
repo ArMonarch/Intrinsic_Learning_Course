@@ -13,7 +13,7 @@ const AboutSection = () => {
           <div>
             <h2 className="text-5xl font-bold heading-gradient">About Us </h2>
             <p className=" text-lg font-sans text-center flex-shrink ">
-              Our online learning platform is not just about courses; It's an
+              Our online learning platform is not just about courses, it's an
               immersive experience designed to make learning fun and rewarding.
               Dive into our interactive Python courses, where learning is not
               just informative but also fun. Earn achievements after completing
