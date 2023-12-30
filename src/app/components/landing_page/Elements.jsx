@@ -47,7 +47,7 @@ const Elements = () => {
             viewport={{ once: false, amount: 0.3 }}
             className="flex-1 lg:bg-quizzes lg:bg-bottom bg-no-repeat mb-12 lg:mb-0 "
           >
-            <text className="absolute z-50 text-center ml-20">
+            <text className="absolute  text-center ml-20">
               <div className="font-bold text-5xl mb-6 tracking-[10%] heading-gradient">
                 Features included
               </div>
