@@ -24,7 +24,7 @@ export function AchievementScroll() {
       const data = await getUserAchievements(user);
       updateAchievement(data? data :[])
     })()
-  }, [user,achievements,updateAchievement])
+  }, [user,updateAchievement])
 
 
   return (
