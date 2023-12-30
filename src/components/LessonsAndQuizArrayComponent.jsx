@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import userAchievements from "@/lib/userAchivementsStore";
 
 
-export function LessonAndQuizComponent ({LessonId, Lessons}) {
+export function LessonAndQuizComponent ({LessonId, Lessons, LessonName}) {
     const {user} = UserAuth()
     const ComponentValues = Lessons
 
@@ -27,28 +27,21 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
                 userId: user.uid,
                 unitId: LessonId
             }
-            const res = fetch(`http://localhost:8081/users/userCompletesUnit`,
+            const unitComplete = await fetch(`http://localhost:8081/users/userCompletesUnit`,
                 {method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify(completed)})
             
-            const getUserAchievements = async(Id) =>{
-                const res = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${Id}`,{method: "GET",cache:'no-store'})
-                const data = await res.json();
-                return data.data;
-            }
-                try{
-                    const Data = await res.json()
-                    if (Data.statusCode == 200){
-                        const achievements = await getUserAchievements()
-                        updateAchievements(achievements)
-                        console.log("Success of chapter complete");
-                }
-                    else{}
-                }catch{}
-            console.log("submit")
+            const getUserAchievements = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${user.uid}`,{method: "GET",cache:'no-store'})
+            const Data = await unitComplete.json()
+            const achievements = await getUserAchievements.json()
+            console.log(achievements)
+            updateAchievements(achievements.data)
+            toast(`Achivement Unlocked: Completed Unit ${LessonName}`)
+                console.log("Success of chapter complete");
         }
     }
+
     function handelPreviousValue () {
         if (!currentIndex == 0){
             changeComponentValue(ComponentValues[currentIndex-1])
@@ -57,7 +50,6 @@ export function LessonAndQuizComponent ({LessonId, Lessons}) {
     }
 
     const {ComponentType, MainQuestion, Options, Answer ,Title, Text, ListStatus, ListValues, Code, Examples } = currentComponentValue;
-    // console.log(Examples)
     return (
         <div className="flex flex-col h-full">
             <Toaster />

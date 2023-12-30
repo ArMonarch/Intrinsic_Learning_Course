@@ -107,12 +107,7 @@ export function LessonCard(props) {
             <Card className="lesson-card" key={index}>
               <Link
                 className="block flex-grow p-5 "
-                href={`/courses/${props.courseTitle
-                  .toLowerCase()
-                  .replace(/ /g, "")}/${lesson.unit
-                  .toLowerCase()
-                  .replace(/ /g, "")}?courseId=${props.courseId}&lessonName=${
-                  lesson.unit}&lessonId=${lesson.id}`}
+                href={`/courses/${props.courseTitle.toLowerCase().replace(/ /g, "")}/${lesson.unit.toLowerCase().replace(/ /g, "")}?lessonId=${lesson.id}`}
               >
                 {lesson.unit}
               </Link>

@@ -10,7 +10,6 @@ import userAchievements from "@/lib/userAchivementsStore";
 
 export function AchievementScroll() {
   const { user } = UserAuth();
-  const achievements = userAchievements((state) => state.achievements)
   const updateAchievement = userAchievements((state) => state.updateAchievement)
 
   const getUserAchievements = async(user) =>{
@@ -26,7 +25,7 @@ export function AchievementScroll() {
     })()
   }, [user,updateAchievement])
 
-
+  const achievements = userAchievements((state) => state.achievements)
   return (
     <ScrollArea className="h-72 w-auto rounded-md border-4">
       <div className="p-4">
