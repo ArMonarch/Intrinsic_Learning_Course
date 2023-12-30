@@ -55,42 +55,14 @@ export function LessonCard(props) {
     );
   };
 
-  const LockIcon = ({ connectorAlign, isLocked }) => {
-    return connectorAlign == "right" ? (
-      <div className="relative ml-auto translate-x-6 translate-y-3 ">
-        <Button
-          asChild
-          variant="outline hover:bg-border"
-          className="absolute z-0 rounded-r-full h-[70px] w-[70px] bg-border"
-        >
-          {isLocked ? <Lock /> : <Unlock />}
-        </Button>
-      </div>
-    ) : connectorAlign == "left" ? (
-      <div className="relative mr-auto -translate-x-24 translate-y-3 ">
-        <Button
-          asChild
-          variant="outline hover:bg-border"
-          className="absolute z-0 rounded-l-full h-[70px] w-[70px] bg-border group-hover:animate-shake"
-        >
-          {isLocked ? <Lock /> : <Unlock />}
-        </Button>
-      </div>
-    ) : null;
-  };
-
   return (
     <Card
       className={
-        "border-8 border-border transition-all duration-500 max-h-[390px]"
+        "border-4 border-primary transition-all duration-500 max-h-[390px]"
       }
     >
       {/* <Button onClick={() => updateProgress(1, "unit2", 5)}>test</Button> */}
       <CardHeader className="pt-4 group">
-        <LockIcon
-          connectorAlign={props.connectorAlign}
-          isLocked={props.isLocked}
-        />
         <CardTitle className="group z-0 text-center font-firacode tracking-wide flex">
           <LessonButton title={props.title} isLocked={props.isLocked} />
         </CardTitle>
@@ -112,7 +84,8 @@ export function LessonCard(props) {
                   .replace(/ /g, "")}/${lesson.unit
                   .toLowerCase()
                   .replace(/ /g, "")}?courseId=${props.courseId}&lessonName=${
-                  lesson.unit}&lessonId=${lesson.id}`}
+                  lesson.unit
+                }&lessonId=${lesson.id}`}
               >
                 {lesson.unit}
               </Link>
