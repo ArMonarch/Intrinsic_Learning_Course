@@ -62,7 +62,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background bg-[url(../../public/circuit-board.svg)] text-foreground;
   }
 }
 
@@ -73,6 +73,10 @@
     rgba(59, 5, 88, 1) 67%,
     rgba(0, 0, 0, 1) 100%
   );
+}
+
+.coursePage {
+  background-image: url(../../public/circuit-board.svg);
 }
 
 .min-h-blockmode {
