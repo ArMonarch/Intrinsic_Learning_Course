@@ -21,7 +21,6 @@ function LessonComponent({Title, Texts, ListStatus, ListValues, code, Examples }
           })}
         </ul>
       )}
-      {/* {Examples[0].Code} */}
       {Examples && Examples.map((Example, index) => {
         return(
           <div key={index}>
