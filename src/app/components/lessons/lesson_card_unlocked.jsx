@@ -48,9 +48,11 @@ export function LessonCard(props) {
         disabled={isLocked}
         onClick={showLesson}
         variant="outline"
-        className="text-3xl font-semibold flex-grow p-10 hover:scale-105 transition-transform duration-300"
+        className="text-3xl group font-semibold flex-grow p-10 m-0 hover:scale-105 transition-transform duration-300"
       >
-        {props.courseTitle}
+        <div className="group-hover:heading-gradient transition- duration-300">
+          {props.courseTitle}{" "}
+        </div>
       </Button>
     );
   };
@@ -58,7 +60,7 @@ export function LessonCard(props) {
   return (
     <Card
       className={
-        "border-4 border-primary transition-all duration-500 max-h-[390px]"
+        "border-8 border-border transition-all duration-500 max-h-[390px]"
       }
     >
       {/* <Button onClick={() => updateProgress(1, "unit2", 5)}>test</Button> */}
@@ -79,7 +81,11 @@ export function LessonCard(props) {
             <Card className="lesson-card" key={index}>
               <Link
                 className="block flex-grow p-5 "
-                href={`/courses/${props.courseTitle.toLowerCase().replace(/ /g, "")}/${lesson.unit.toLowerCase().replace(/ /g, "")}?lessonId=${lesson.id}`}
+                href={`/courses/${props.courseTitle
+                  .toLowerCase()
+                  .replace(/ /g, "")}/${lesson.unit
+                  .toLowerCase()
+                  .replace(/ /g, "")}?lessonId=${lesson.id}`}
               >
                 {lesson.unit}
               </Link>
