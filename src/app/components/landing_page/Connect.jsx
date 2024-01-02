@@ -3,19 +3,22 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { fadeIn } from "@/app/variant";
+import { UserAuth } from "@/app/context/AuthContext";
 import "./App.css";
 
 const Connect = () => {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const { user } = UserAuth();
 
   const sendEmail = async () => {
     const nameset = name;
-    const textset = `You sent us this complaint.\n ${text}`;
-    const emailset = email;
+    const textset = `You sent us this message:\n ${text}`;
+    const emailset = user ? user.email : email;
+
     const data = {
-      subject: `Complaint confirmation by ${nameset}`,
+      subject: `Feedback confirmation by ${nameset}`,
       text: textset,
       emailIdArray: [emailset],
     };
@@ -33,7 +36,6 @@ const Connect = () => {
     console.log(res);
   };
 
-  console.log(name);
   return (
     <section className=" lg:py-24 lg:h-[60%] mt-40 flex items-center py-16 bg-black opacity-60 w-full px-10  ">
       <div className="container mx-auto">
@@ -70,7 +72,7 @@ const Connect = () => {
             <input
               className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-purple-400 transition-all "
               type="text"
-              placeholder="Your email"
+              placeholder={user ? user.email : "Your email"}
               onChange={(e) => setEmail(e.target.value)}
             />
             <textarea
