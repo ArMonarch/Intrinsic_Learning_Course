@@ -13,24 +13,24 @@ const Cards = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.2 }}
-          className="flex-1 mb-12 gap-y-12 "
+          className="flex-1 mb-12 gap-y-10 "
         >
-          <div className="flex-col place-self-center mb-12">
-            <h2 className="text-6xl font-bold heading-gradient">
+          <div className="flex-col place-self-center mb-12 mt-2">
+            <h2 className="text-6xl font-bold heading-gradient mb-5">
               Explore Features
             </h2>
-            <span className="font-bold text-lg">
+            <span className="font-bold text-lg ">
               Take a sneak peek into the engaging world that awaits you.
             </span>
           </div>
           {/*image */}
-          <div className=" flex justify-self-center group relative overflow-hidden border-2 border-white/50 rounded-xl">
+          <div className=" flex justify-self-center group relative mt-14 overflow-hidden border-2 border-white/50 rounded-xl">
             {/* overlay*/}
 
             <div className="group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300 "></div>
             {/*img */}
-            <div className=" group-hover:scale-12font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-6005 transition-all duration-500">
-              <Image src="/image/img2.png" width={300} height={300} />
+            <div className=" group-hover:scale-12 font-bold text-3xl w-[550px] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-6005 transition-all duration-500">
+              <img src="/image/screen1.png" />
             </div>
             {/*pretitle */}
             <div className=" absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50">
@@ -60,7 +60,7 @@ const Cards = () => {
             </div>
             {/*img */}
             <div className=" group-hover:scale-12font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-6005 transition-all duration-500  ">
-              <Image src="/image/img2.png" width={300} height={300} />
+              <Image src="/image/Avatar.png" width={300} height={300} />
             </div>
             {/*pretitle */}
             <div className=" absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50">
@@ -81,8 +81,8 @@ const Cards = () => {
               {" "}
             </div>
             {/*img */}
-            <div className=" group-hover:scale-12font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-6005 transition-all duration-500  ">
-              <Image src="/image/img1.png" width={300} height={300} />
+            <div className=" group-hover:scale-12font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-6005 transition-all duration-500 ">
+              <Image src="/image/Achievement.png" width={300} height={300} />
             </div>
             {/*pretitle */}
             <div className=" absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50">
