@@ -96,8 +96,8 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
                   Options={Options}
                   Answer={Answer}
                   nextLesson={handelNextValue}
-                  Toast={toast}
-                  quizComplete={quizC}
+                  // Toast={toast}
+                  // quizComplete={quizC}
                   setquizC={setquzC}
                 />
               </div>
