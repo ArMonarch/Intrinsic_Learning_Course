@@ -3,8 +3,18 @@ import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { UserAuth } from "@/app/context/AuthContext";
+import Link from "next/link";
 
 const Header = () => {
+  const { user, googleSignIn, logOut } = UserAuth();
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <section className="banner">
       <div className="grid grid-cols-1 mt-2 sm:grid-cols-12">
@@ -42,9 +52,20 @@ const Header = () => {
           </p>
 
           <div>
-            <button className="px-10 py-4 w-full text-2xl sm:w-fit rounded-full mr-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">
-              Start Now
-            </button>
+            {!user ? (
+              <button
+                className="px-10 py-4 w-full text-2xl sm:w-fit rounded-full mr-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white"
+                onClick={handleSignIn}
+              >
+                Start Now
+              </button>
+            ) : (
+              <Link href="/courses">
+                <button className="px-10 py-4 w-full text-2xl sm:w-fit rounded-full mr-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">
+                  Continue
+                </button>
+              </Link>
+            )}
           </div>
         </motion.div>
         <motion.div
