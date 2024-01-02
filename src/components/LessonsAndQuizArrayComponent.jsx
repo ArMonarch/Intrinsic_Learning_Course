@@ -9,11 +9,13 @@ import toast, { Toaster } from "react-hot-toast";
 import userAchievements from "@/lib/userAchivementsStore";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
   const { user } = UserAuth();
   const ComponentValues = Lessons;
   const [comp, setComp] = useState(false);
+  const [quizC, setquzC] = useState(false);
   const [currentIndex, changeIndex] = useState(0);
   const [currentComponentValue, changeComponentValue] = useState(
     ComponentValues[0]
@@ -22,6 +24,7 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
   const updateAchievements = userAchievements(
     (state) => state.updateAchievement
   );
+  //console.log(quizC);
 
   async function handelNextValue() {
     if (currentIndex < ComponentValues.length - 1) {
@@ -51,6 +54,7 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
       updateAchievements(achievements.data);
 
       toast(`Achivement Unlocked: Completed Unit ${LessonName}`);
+
       console.log("Success of chapter complete");
     }
     if (currentIndex == ComponentValues.length - 1) {
@@ -93,6 +97,8 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
                   Answer={Answer}
                   nextLesson={handelNextValue}
                   Toast={toast}
+                  quizComplete={quizC}
+                  setquizC={setquzC}
                 />
               </div>
             ) : (

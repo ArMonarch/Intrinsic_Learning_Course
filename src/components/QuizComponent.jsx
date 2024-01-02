@@ -3,7 +3,15 @@ import Code from "./Code";
 import { Button } from "./ui/button";
 import { UserAuth } from "@/app/context/AuthContext";
 
-function QuizComponent({ MainQuestion, SubQuestion, Options, Answer, Toast }) {
+function QuizComponent({
+  MainQuestion,
+  SubQuestion,
+  Options,
+  Answer,
+  Toast,
+  quizComplete,
+  setquizC,
+}) {
   const { user } = UserAuth();
   const postData = {
     uid: user.uid,
@@ -12,7 +20,7 @@ function QuizComponent({ MainQuestion, SubQuestion, Options, Answer, Toast }) {
   const checkAnswer = async (option) => {
     if (option === Answer) {
       Toast(" ✅ Correct, You Earned 2 Xp!!");
-
+      // setquizC(true);
       const res = await fetch(`http://localhost:8081/users/addExperience`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
