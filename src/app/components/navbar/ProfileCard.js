@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 const ProfileCard = () => {
   const { user } = UserAuth();
@@ -9,22 +12,27 @@ const ProfileCard = () => {
   useEffect(() => {
     (async () => {
       const data = await updateExp(user);
-      console.log(user.uid)
-      console.log(user.email)
+      console.log(user.uid);
+      console.log(user.email);
       setExp(data);
     })();
   }, [user]);
 
   return (
     <div className="flex flex-col gap-2">
-      <Avatar className="self-center h-16 w-16 mb-4">
+      <Avatar className="self-center h-16 w-16">
         {/* insert gmail avatar here */}
         <AvatarImage src="" />
         <AvatarFallback>You</AvatarFallback>
       </Avatar>
-      <p>{user.email}</p>
-      <p>Level:{`${exp.data?.currentExperienceLevel}`}</p>
-      <p>Experience:{`${exp.data?.currentExperiencePoints}`}</p>
+      <div className="font-light">{user.email}</div>
+      <Separator />
+      <div className="flex flex-row items-center gap-2 ">
+        <Badge variant={"secondary"} className="text-lg font-extrabold">
+          {`${exp.data?.currentExperienceLevel}`}
+        </Badge>
+        <Progress value={exp.data?.currentExperiencePoints * 10} />
+      </div>
     </div>
   );
 };
