@@ -23,7 +23,7 @@ export function DummyLogo() {
         className="absolute left-0 top-3 z-10 inline-block bg-muted p-2 transition-transormation duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-[512px]"
       >
         <div className="absolute z-10 left-10 top-0 text-3xl font-extrabold">
-          Learn
+          Bytes
         </div>
         <ChevronRight className="peer-checked:group-[]:rotate-180 transition-transform duration-500 " />
       </label>
@@ -77,7 +77,7 @@ export function Drawer() {
         className="absolute left-0 top-3 z-10 inline-block bg-muted p-2 transition-transormation duration-500 hover:text-primary hover:cursor-pointer peer-checked:text-primary group peer-checked:left-[512px]"
       >
         <div className="absolute z-10 left-10 top-0 text-3xl font-extrabold">
-          Learn
+          Bytes
         </div>
         <ChevronRight className="peer-checked:group-[]:rotate-180 transition-transform duration-500 " />
       </label>

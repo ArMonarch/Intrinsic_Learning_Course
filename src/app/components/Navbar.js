@@ -67,9 +67,9 @@ const Navbar = (props) => {
           </Button>
         )}
 
-        <Button variant="link" onClick={sendEmail}>
+        {/* <Button variant="link" onClick={sendEmail}>
           Send
-        </Button>
+        </Button> */}
         <ModeToggle />
         {!user ? (
           <Button onClick={handleSignIn}>Login</Button>
