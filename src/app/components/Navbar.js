@@ -63,7 +63,7 @@ const Navbar = (props) => {
 
         {!user ? null : (
           <Button variant="link" asChild>
-            <Link href="/courses">Course</Link>
+            <Link href="/courses">Courses</Link>
           </Button>
         )}
 
