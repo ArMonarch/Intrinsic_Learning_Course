@@ -10,7 +10,6 @@ function QuizComponent({ MainQuestion, SubQuestion, Options, Answer, Toast }) {
     exp: 2,
   };
   const checkAnswer = async (option) => {
-    disableNext(false);
     if (option === Answer) {
       Toast(" ✅ Correct, You Earned 2 Xp!!");
 

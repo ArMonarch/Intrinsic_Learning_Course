@@ -89,10 +89,6 @@ export function LessonCard(props) {
               >
                 {lesson.unit}
               </Link>
-              <div className="m-1 border-2 rounded-full p-3">
-                {/* {if previous lesson unlocked, then available, else unavailable} */}
-                <Lock />
-              </div>
             </Card>
           );
         })}
