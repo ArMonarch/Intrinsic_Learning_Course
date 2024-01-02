@@ -78,6 +78,7 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
       <div className="flex flex-col h-full items-center">
         <div className="flex items-center min-h-blockmode px-10">
           <div className="flex flex-col bg-muted p-10 border-8 border-border rounded-2xl shadow-primary">
+            {/* {ComponentType == "Quiz" ? disableNext(true) : disableNext(false)} */}
             {ComponentType == "Quiz" ? (
               <div>
                 <QuizComponent
