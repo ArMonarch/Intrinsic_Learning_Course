@@ -11,6 +11,7 @@ import userAchievements from "@/lib/userAchivementsStore";
 export function AchievementScroll() {
   const { user } = UserAuth();
   const updateAchievement = userAchievements((state) => state.updateAchievement)
+  const [extraAchievement, setExtraAchevement] = useState([]);
 
   const getUserAchievements = async(user) =>{
     const res = await fetch(`http://localhost:8081/users/lessonAchivements?uid=${user.uid}`,{method: "GET",cache:'no-store'})
@@ -18,12 +19,20 @@ export function AchievementScroll() {
     return data.data;
   }
 
+  const getUserExtraAchievement = async (user) => {
+    const res = await fetch (`http://localhost:8081/users/seeAchievement?uid=${user.uid}`,{method:'GET', cache:'no-cache'})
+    const data = await res.json();
+    return data.data
+  }
+
   useEffect(()=>{
     (async()=>{
-      const data = await getUserAchievements(user);
-      updateAchievement(data? data :[])
+      const Achievement = await getUserAchievements(user);
+      updateAchievement(Achievement? Achievement :[])
+      const extraAchievement = await getUserExtraAchievement(user)
+      setExtraAchevement(extraAchievement? extraAchievement : [])
     })()
-  }, [user,updateAchievement])
+  }, [user,updateAchievement, setExtraAchevement])
 
   const achievements = userAchievements((state) => state.achievements)
   return (
@@ -44,6 +53,17 @@ export function AchievementScroll() {
             <Separator className="my-2" />
           </div>
         )) }
+        {extraAchievement && extraAchievement.map((achievement,index) => (
+          <div key={index}>
+          <Card className="text-sm border-2">
+            <CardHeader className="p-3">{achievement.title}</CardHeader>
+            <CardContent className="bg-secondary p-2 rounded-b-lg">
+              {achievement.description}
+            </CardContent>
+          </Card>
+          <Separator className="my-2" />
+        </div>
+        ))}
       </div>
     </ScrollArea>
   );
