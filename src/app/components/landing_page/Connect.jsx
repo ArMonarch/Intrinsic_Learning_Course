@@ -1,11 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import { fadeIn } from "@/app/variant";
 import "./App.css";
 
 const Connect = () => {
+  const [text, setText] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const sendEmail = async () => {
+    const nameset = name;
+    const textset = `You sent us this complaint.\n ${text}`;
+    const emailset = email;
+    const data = {
+      subject: `Complaint confirmation by ${nameset}`,
+      text: textset,
+      emailIdArray: [emailset],
+    };
+    const res = await fetch("http://localhost:8081/eService", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+
+      body: JSON.stringify(data),
+      // body data type must match "Content-Type" header
+    });
+    console.log(res);
+  };
+
+  console.log(name);
   return (
     <section className=" lg:py-24 lg:h-[60%] mt-40 flex items-center py-16 bg-black opacity-60 w-full px-10  ">
       <div className="container mx-auto">
@@ -37,17 +65,24 @@ const Connect = () => {
               className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-purple-400 transition-all "
               type="text"
               placeholder="Your name"
+              onChange={(e) => setName(e.target.value)}
             />
             <input
               className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-purple-400 transition-all "
               type="text"
               placeholder="Your email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <textarea
               className="bg-transparent border-b py-12 outline-none w-full placeholder:text-white focus:border-purple-400 transition-all resize-none mb-12"
               placeholder="Your Message"
+              onChange={(e) => setText(e.target.value)}
             ></textarea>
-            <button className="px-10 py-4 w-full text-lg sm:w-fit rounded-full mr-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">
+            <button
+              className="px-10 py-4 w-full text-lg sm:w-fit rounded-full mr-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white"
+              variant="link"
+              onClick={sendEmail}
+            >
               {" "}
               Send Message
             </button>
