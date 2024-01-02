@@ -7,6 +7,7 @@ import Cards from "./components/landing_page/Cards";
 import Connect from "./components/landing_page/Connect";
 import "./global.css";
 import "./components/landing_page/App.css";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export const metadata = {
   title: "Intrinsically Motivating Courses",
@@ -50,14 +51,16 @@ export default function Home() {
           </svg>
         </div>
         <div className="container mt-12 mx-auto  px-900 py-5">
-          <Header />
-          <AboutSection />
-          <Elements />
-          <div className="flex flex-row mt-40 justify-start">
-            <Cards />
-          </div>
+          <AuthContextProvider>
+            <Header />
+            <AboutSection />
+            <Elements />
+            <div className="flex flex-row mt-40 justify-start">
+              <Cards />
+            </div>
 
-          <Connect />
+            <Connect />
+          </AuthContextProvider>
         </div>
       </div>
     </main>
