@@ -21,8 +21,8 @@ const ProfileCard = () => {
   return (
     <div className="flex flex-col gap-2">
       <Avatar className="self-center h-16 w-16">
-        {/* insert gmail avatar here */}
-        <AvatarImage src="" />
+        {}
+        <AvatarImage src={user.photoURL} />
         <AvatarFallback>You</AvatarFallback>
       </Avatar>
       <div className="font-light">{user.email}</div>
