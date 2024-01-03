@@ -36,6 +36,7 @@ export default async function courses() {
                 courseTitle={course.name}
                 courseId={course.id}
                 alignment="justify-self-end"
+                isLocked={true}
               />
             </div>
           );
