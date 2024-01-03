@@ -8,11 +8,13 @@ import { UserAuth } from "@/app/context/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import userAchievements from "@/lib/userAchivementsStore";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
   const { user } = UserAuth();
   const ComponentValues = Lessons;
 
+  const [comp, setComp] = useState(false);
   const [currentIndex, changeIndex] = useState(0);
   const [currentComponentValue, changeComponentValue] = useState(
     ComponentValues[0]
@@ -50,6 +52,9 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
       updateAchievements(achievements.data);
       toast(`Achivement Unlocked: Completed Unit ${LessonName}`);
       console.log("Success of chapter complete");
+      if (currentIndex == ComponentValues.length - 1) {
+        setComp(true);
+      }
     }
   }
 
@@ -111,9 +116,15 @@ export function LessonAndQuizComponent({ LessonId, Lessons, LessonName }) {
               >
                 Previous
               </Button>
-              <Button className="" onClick={handelNextValue}>
-                Continue
-              </Button>
+              {!comp ? (
+                <Button className="" onClick={handelNextValue}>
+                  Continue
+                </Button>
+              ) : (
+                <Link href="/courses">
+                  <Button className="">Complete</Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
